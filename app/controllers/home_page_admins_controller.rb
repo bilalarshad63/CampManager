@@ -3,4 +3,5 @@ class HomePageAdminsController < ApplicationController
 
 	def index
 	end
+
 end
