@@ -1,0 +1,22 @@
+.any_links:hover{
+           background-color: #fff
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.back{
+     background: url( asset-path('back.jpeg') );
+  background-size: 100% 100%;
+}
+
+.quantity::-webkit-inner-spin-button, 
+.quantity::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+

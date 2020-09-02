@@ -1,0 +1,9 @@
+<div class='flash-messages'>
+  <% flash.each do |type, message| %>
+    <% next unless message %>
+    <div class='internal-alert msg-<%= type %>'>
+      <div class='alert-type'></div>
+      <div class='alert-msg'><%= message.html_safe %></div>
+    </div>
+  <% end %>
+</div>

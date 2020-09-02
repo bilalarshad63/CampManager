@@ -1,56 +1,50 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-<div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first-name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :middle_name %><br />
-    <%= f.text_field :middle_name, autofocus: true, autocomplete: "middle-name" %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.country_select :country, autofocus: true, autocomplete: "country" %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.number_field :phone_number, autofocus: true, autocomplete: "phone-number" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
+<div class="card-body">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="row">
+      <div class="field col-4">
+        <%= f.label :first_name, "First Name:*"%><br />
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first-name", style: 'width: 100%'%>
+      </div>
+      <div class="field col-4">
+        <%= f.label :middle_name %><br />
+        <%= f.text_field :middle_name, autofocus: true, autocomplete: "middle-name", style: 'width: 100%'%>
+      </div>
+      <div class="field col-4">
+        <%= f.label :last_name, "Last Name:*" %><br />
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name", style: 'width: 100%'%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field col-6">
+        <%= f.label :email, "Email Address:*"%><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",  style: 'width: 100%'%>
+      </div>
+      <div class="field col-6">
+        <%= f.label :country, "Country:*" %><br />
+        <%= f.country_select :country, {}, {class: "btn border border-info"}, autofocus: true, autocomplete: "country"%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field col-4">
+        <%= f.label :phone_number, "Phone Number:*" %><br />
+        <%= f.number_field :phone_number, autofocus: true, autocomplete: "phone-number", style: 'width: 100%', class:'quantity'%>
+      </div>
+      <div class="field col-4">
+        <%= f.label :password, "Password:*" %>
+        <%= f.password_field :password, autocomplete: "new-password", style: 'width: 100%'%>
+      </div>
+      <div class="field col-4">
+        <%= f.label :password_confirmation, "Password Confirmation:*" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", style: 'width: 100%'%>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit "Update" class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
 <h3>Cancel my account</h3>
-
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
 <%= link_to "Back", :back %>
