@@ -12,7 +12,11 @@
   <body>
 
 
- 
+    <% if user_signed_in? %>
+    <p>Hello <%= current_user.first_name %> - <%= link_to "Sign_Out", destroy_user_session_path, :method => 'delete' %></p>
+    <% end %>
+
+    
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
           <% end %>
