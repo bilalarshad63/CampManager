@@ -13,21 +13,21 @@
           <div class="row">
             <div class="field col-4">
               <%= f.label :first_name, "First Name:*"%><br />
-              <%= f.text_field :first_name, autofocus: true, autocomplete: "first-name", style: 'width: 100%'%>
+              <%= f.text_field :first_name, autofocus: true, autocomplete: "first-name", class: 'w_100'%>
             </div>
             <div class="field col-4">
               <%= f.label :middle_name %><br />
-              <%= f.text_field :middle_name, autofocus: true, autocomplete: "middle-name", style: 'width: 100%'%>
+              <%= f.text_field :middle_name, autofocus: true, autocomplete: "middle-name", class: 'w_100'%>
             </div>
             <div class="field col-4">
               <%= f.label :last_name, "Last Name:*" %><br />
-              <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name", style: 'width: 100%'%>
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name", class: 'w_100'%>
             </div>
           </div>
           <div class="row">
             <div class="field col-6">
               <%= f.label :email, "Email Address:*"%><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email",  style: 'width: 100%'%>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w_100'%>
             </div>
             <div class="field col-6">
               <%= f.label :country, "Country:*" %><br />
@@ -37,20 +37,20 @@
           <div class="row">
             <div class="field col-4">
               <%= f.label :phone_number, "Phone Number:*" %><br />
-              <%= f.number_field :phone_number, autofocus: true, autocomplete: "phone-number", style: 'width: 100%', class:'quantity'%>
+              <%= f.number_field :phone_number, autofocus: true, autocomplete: "phone-number", class:'quantity w_100'%>
             </div>
             <div class="field col-4">
               <%= f.label :password, "Password:*" %>
            
-              <%= f.password_field :password, autocomplete: "new-password", style: 'width: 100%'%>
+              <%= f.password_field :password, autocomplete: "new-password", class: 'w_100'%>
             </div>
             <div class="field col-4">
               <%= f.label :password_confirmation, "Password Confirmation:*" %><br />
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", style: 'width: 100%'%>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'w_100'%>
             </div>
           </div>
           <p>By voluntarily registering on this site, you consent to:<br>
-            (i) the collection, use and disclosure by the XYZ Institutions of your personal information, including your personal health information for the purposes of: (a) institutional planning to assist with the creation (b) notification and/or delivery of other programs and services (c) statistical analysis necessary to further assist  (d) planning of or response to a natural disaster or other event deemed to be an emergency (collectively, the "Purposes"); and (ii) being contacted by the XYZ Institutions for reasons related to the Purposes. For more information please review our <a href="<%= privacy_index_path %>" class=" any_links " style="color: #57a22b"> Privacy Policy.</a>*
+            (i) the collection, use and disclosure by the XYZ Institutions of your personal information, including your personal health information for the purposes of: (a) institutional planning to assist with the creation (b) notification and/or delivery of other programs and services (c) statistical analysis necessary to further assist  (d) planning of or response to a natural disaster or other event deemed to be an emergency (collectively, the "Purposes"); and (ii) being contacted by the XYZ Institutions for reasons related to the Purposes. For more information please review our <a href="<%= privacy_index_path %>" class="any_links g_color"> Privacy Policy.</a>*
           </p>
           <div class="field ">
             <%= radio_button_tag :agreement, "yes", false, required: 'true',class: 'border border-success'%>
@@ -61,7 +61,7 @@
             <%= f.label :agreement, "I do not agree" %>
           </div>
           <div class="actions">
-            <a href="<%= new_user_session_path %>" class=" any_links btn border border-success" style="color: #57a22b" role="button" aria-disabled="true">Back to Sign In</a>
+            <a href="<%= new_user_session_path %>" class="g_color any_links btn border border-success" role="button" aria-disabled="true">Back to Sign In</a>
             <%= f.submit "Sign Up", class: 'btn btn-success'%>
           </div>
         <% end %>

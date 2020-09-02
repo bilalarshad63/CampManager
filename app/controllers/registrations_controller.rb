@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
-    def create
-    	build_resource
+	def create
+  	build_resource
 	 	if params[:agreement] == "no"
 	 		resource.assign_attributes(sign_up_params)
 		 	flash.now[:danger] = "You did not agree to the below listed terms and conditions. Please contact Admin at xyz@campmanager.com "

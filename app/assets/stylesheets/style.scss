@@ -1,5 +1,5 @@
 .any_links:hover{
-           background-color: #fff
+  background-color: #fff
 }
 
 hr {
@@ -9,7 +9,7 @@ hr {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.back{
+.back {
      background: url( asset-path('back.jpeg') );
   background-size: 100% 100%;
 }
@@ -20,3 +20,10 @@ hr {
   margin: 0; 
 }
 
+.w_100 {
+	width: 100%;
+}
+
+.g_color {
+	color: #57a22b !important;
+}
