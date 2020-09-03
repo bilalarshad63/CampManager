@@ -1,6 +1,7 @@
 class HomePageAdminsController < ApplicationController
 
- before_action :authenticate_admin! , :get_users
+ before_action :authenticate_admin! , :get_users 
+ before_action :set_user, only: [:show_user, :destroy]
  layout 'admin_layout'
 
 	def index
@@ -8,8 +9,12 @@ class HomePageAdminsController < ApplicationController
 		@users=get_users
 	end
 
+	def show_user
+	end
+
+
 	def destroy
-		@user=set_user
+		
 		if @user.destroy 
 		  respond_to do |format|
 		  format.html { redirect_to homepage_path, notice: 'User was successfully destroyed.' }

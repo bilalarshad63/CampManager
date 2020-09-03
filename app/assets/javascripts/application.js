@@ -15,5 +15,6 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require sidebar
 //= require_self
 
