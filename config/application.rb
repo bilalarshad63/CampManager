@@ -18,7 +18,7 @@ module GlobalEncounters
 
     ActionMailer::Base.smtp_settings = {
 
-      address: 'smtp.gmail.com', domain:  'mail.google.com', port:  587, user_name:  'bilalarshad1011@gmail.com', password:  '4262935b', 
+      address: 'smtp.gmail.com', domain:  'mail.google.com', port:  587, user_name:  'te6310@gmail.com', password:  'Password123@', 
       authentication:  'login', enable_starttls_auto:  true	
     }
   end
