@@ -1,0 +1,40 @@
+
+<div class="container" style="width: 50rem; margin-top: 10%;">
+  <div class="main-content card card-block">
+    <div class="card-body text-center">
+
+
+      <h2>User Profile</h2>
+      
+
+      <div id="container">
+        <div id="left">Name</div>
+        <div id="right"><%= @user.first_name + ' '+ @user.middle_name + ' '+ @user.last_name %></div>
+      </div>
+      <br>
+      <hr>
+      <div id="container">
+        <div id="left">Email</div>
+        <div id="right"><%= @user.email %></div>
+      </div>
+      <br>
+      <hr>
+       <div id="container">
+        <div id="left">Phone Number</div>
+        <div id="right"><%= @user.phone_number %></div>
+      </div>
+      <br>
+      <hr>
+       <div id="container">
+        <div id="left">Country</div>
+        <div id="right"><%= @user.country%></div>
+      </div>
+      <br>
+      <hr>
+     
+                    
+                       
+                       
+    </div>
+  </div>
+</div>

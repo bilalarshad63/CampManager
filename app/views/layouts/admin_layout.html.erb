@@ -9,17 +9,29 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    
 
   </head>
 
-  <body>
+  <body class="back">
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #F2F9F2;" >
+    <button class="btn side_border buttons"  onclick="toggleSidebar()"><i class="material-icons table_icons">menu</i></i></button>
+    <div id="sidebar">
+      <span></span>
+      <span></span>
+      <span></span>
+      <ul>
+        <li>Settings</li>  
+        <li>Reports</li>
+        <li>Users</li>
+        <li>Application Data</li>
+      </ul>
+    </div>
       <a class="navbar-brand buttons" href="#" style="color:#06810C;  margin-left: 10px; ">Camp Managment System</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"> </ul>
         <form class="form-inline my-2 my-lg-0">
-          <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">home</i></i></button>'.html_safe %>
+          <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">home</i></i></button>'.html_safe , homepage_path%>
           <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">email</i></i></button>'.html_safe %>
           <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">home</i></i></button>'.html_safe %>
           <%= current_admin.first_name  %>
