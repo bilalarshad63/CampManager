@@ -10,8 +10,13 @@ hr {
 }
 
 .back {
-     background: url( asset-path('back.jpeg') );
+  background: url( asset-path('back.jpeg') );
   background-size: 100% 100%;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover; 
+  margin: 0 auto!important;  
+  
 }
 
 .quantity::-webkit-inner-spin-button, 
@@ -24,6 +29,41 @@ hr {
 	width: 100%;
 }
 
+.p_20 {
+  padding-top: 20px;
+}
+
+.wid_mt {
+  width: 30rem;
+  margin-top: 40px;
+}
+
 .g_color {
 	color: #57a22b !important;
+}
+
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.divider-text span {
+    padding: 7px;
+    font-size: 12px;
+    position: relative;   
+    z-index: 2;
+}
+.divider-text:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: 55%;
+    left: 0;
+    z-index: 1;
+}
+
+.m-110 {
+  margin-left: 110px;
 }

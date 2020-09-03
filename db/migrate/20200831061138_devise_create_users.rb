@@ -7,7 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :first_name
       t.string :middle_name
       t.string :last_name
-      t.integer :phone_number
+      t.string :phone_number
       t.string :country
 
       ## Database authenticatable
@@ -28,11 +28,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.string   :current_sign_in_ip
       # t.string   :last_sign_in_ip
 
-      ## Confirmable
-      # t.string   :confirmation_token
-      # t.datetime :confirmed_at
-      # t.datetime :confirmation_sent_at
-      # t.string   :unconfirmed_email # Only if using reconfirmable
+      # Confirmable
+      t.string   :confirmation_token
+      t.datetime :confirmed_at
+      t.datetime :confirmation_sent_at
+      t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
