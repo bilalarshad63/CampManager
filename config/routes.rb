@@ -1,19 +1,21 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: {registrations: "registrations"} 
+  
 
-  devise_for :admins
-  root 'home#index'
-  devise_for :users, controllers: {registrations: "registrations"}
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :privacy, only: [:index] 
 
-  resources :privacy, only: [:index]
 
-  delete 'users/:id(.:format)/destroy', :to => 'home_page_admins#destroy' , as: 'destroy_user'
+#admins Routes
+  devise_for :admins, controllers: {registrations: "admin/registrations",sessions: 'admin/sessions'}
   get '/admin', :to => 'home_page_admins#index' , as: 'homepage'
-  get '/admin/users/:id(.:format)/show', :to => 'home_page_admins#show_user' , as: 'show_user'
-
+  get '/admin/users/:id(.:format)/show', :to => 'home_page_admins#show_user' , as: 'show_user_by_admin'
+  get '/admin/users/:id(.:format)/edit', :to => 'home_page_admins#edit_user' , as: 'edit_user_by_admin'
+  put '/admin/users/:id(.:format)/update', :to => 'home_page_admins#update_user' , as: 'update_user_by_admin'
+  delete 'users/:id(.:format)/destroy', :to => 'home_page_admins#destroy' , as: 'destroy_user_by_admin'
+  
 	
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  
+  root 'home#index'
 
 end

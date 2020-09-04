@@ -28,9 +28,9 @@
                 <td> <%= user.phone_number %> </td>
                 <td> <%= user.country %> </td>
                 <td>
-                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, show_user_path(user) %>
-                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">create</i></button>'.html_safe %>
-                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">delete</i></button>'.html_safe,destroy_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }   %>
+                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, show_user_by_admin_path(user) %>
+                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">create</i></button>'.html_safe, edit_user_by_admin_path(user) %>
+                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">delete</i></button>'.html_safe,destroy_user_by_admin_path(user), method: :delete, data: { confirm: 'Are you sure?' }   %>
                 </td>
               </tr>
             <%end%>
