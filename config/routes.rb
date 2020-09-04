@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-
-  devise_for :users, controllers: {registrations: "registrations"} 
+    
+  devise_for :users, controllers: {registrations: "registrations", passwords: "passwords"}
+  resources :privacy, only: [:index]
   
 
-  resources :privacy, only: [:index] 
-
-
-#admins Routes
+  #admins Routes
   devise_for :admins, controllers: {registrations: "admin/registrations",sessions: 'admin/sessions'}
   get '/admin', :to => 'home_page_admins#index' , as: 'homepage'
   get '/admin/users/:id(.:format)/show', :to => 'home_page_admins#show_user' , as: 'show_user_by_admin'
