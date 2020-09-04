@@ -39,9 +39,6 @@ gem 'strong_password', '~> 0.0.9'
 gem 'country_select', require: 'country_select_without_sort_alphabetical'
 gem 'jquery-rails'
 
-
-
-
 #devise
 gem 'devise'
 #bootstrap
