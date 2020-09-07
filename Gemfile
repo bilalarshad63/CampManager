@@ -39,12 +39,15 @@ gem 'strong_password', '~> 0.0.9'
 gem 'country_select', require: 'country_select_without_sort_alphabetical'
 gem 'jquery-rails'
 
-#devise
+#devise for auth and invitations
 gem 'devise'
+gem 'devise_invitable'
 #bootstrap
 gem 'bootstrap'
 #sql
 gem 'mysql2'
+#kaminari for pagination
+gem 'kaminari'
 
 
 group :development, :test do

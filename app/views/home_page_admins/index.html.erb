@@ -6,6 +6,8 @@
         <h4>Users for Test Resident Camp</h4>
         <h6> <%= "Total Records " + @users.count.to_s + " of "+ @users.count.to_s %> </h6>
 
+        
+
        <div class="table-responsive" style="padding: 20px;">
         <table id="mytable" class="table table-bordred table-striped">
           <thead>
@@ -36,6 +38,8 @@
             <%end%>
           </tbody>
         </table>
+        
+        <%= link_to 'Add New User' ,new_user_by_admin_path,class: 'btn btn-success'%>
       </div>
       </div>
     </div>

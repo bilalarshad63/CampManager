@@ -8,8 +8,6 @@ class DeviseInvitableAddToUsers < ActiveRecord::Migration[5.2]
       t.integer    :invitation_limit
       t.references :invited_by, polymorphic: true
       t.integer    :invitations_count, default: 0
-      t.integer    :invited_by_id
-      t.string     :invited_by_type
       t.index      :invitations_count
       t.index      :invitation_token, unique: true # for invitable
       t.index      :invited_by_id
