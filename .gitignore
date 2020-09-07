@@ -2,3 +2,5 @@
 .DS_Store
 tmp/
 storage/
+
+log/development.log

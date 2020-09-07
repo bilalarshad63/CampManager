@@ -4,43 +4,28 @@
     <div class="main-content card card-block">
       <div class="text-center" style="padding-top: 20px;">
         <h4>Users for Test Resident Camp</h4>
-        <h6> <%= "Total Records " + @users.count.to_s + " of "+ @users.count.to_s %> </h6>
-
-        
-
-       <div class="table-responsive" style="padding: 20px;">
-        <table id="mytable" class="table table-bordred table-striped">
-          <thead>
-            <th><input type="checkbox" id="checkall" /></th>
-            <th>User ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-            <th>Country</th>
-            <th>Actions</th>
-          </thead>
-          
-          <tbody>
-            <% @users.each do |user| %>
-              <tr>
-                <td><input type="checkbox" class="checkthis" /></td>
-                <td> <%= user.id %> </td>
-                <td> <%= user.first_name + " " + user.middle_name + " " + user.last_name %> </td>
-                <td> <%= user.email %> </td>
-                <td> <%= user.phone_number %> </td>
-                <td> <%= user.country %> </td>
-                <td>
-                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, show_user_by_admin_path(user) %>
-                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">create</i></button>'.html_safe, edit_user_by_admin_path(user) %>
-                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">delete</i></button>'.html_safe,destroy_user_by_admin_path(user), method: :delete, data: { confirm: 'Are you sure?' }   %>
-                </td>
-              </tr>
-            <%end%>
-          </tbody>
-        </table>
-        
-        <%= link_to 'Add New User' ,new_user_by_admin_path,class: 'btn btn-success'%>
-      </div>
+        <h6> <%= "Total Records " + @users.count.to_s + " of " + @users.count.to_s %> </h6>
+        <%= form_for_filterrific @filterrific do |f| %>
+          <div>
+            Search
+            <%= f.text_field(
+              :search_query,
+              class: 'filterrific-periodically-observed'
+            ) 
+            %>
+            <div class="g_colors any_links">
+              <%= link_to(
+                'Reset filters',
+                reset_filterrific_url,
+                class: 'g_color any_links'
+                ) %>
+            </div>
+          </div>
+        <% end %>
+        <%= render(
+          partial: 'home_page_admins/list',
+          locals: { students: @students }
+        ) %>
       </div>
     </div>
   </div>

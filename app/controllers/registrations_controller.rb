@@ -21,9 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit %i[first_name middle_name last_name email country phone_number password password_confirmation current_password]
   end
 
-	def configure_sign_up_params
-    params.require(:user).permit(:first_name, :middle_name, :last_name, :email, :country, :phone_number,:password, :password_confirmation, :skip_password_validation)
+  def configure_sign_up_params
+    params.require(:user).permit %i[first_name middle_name last_name email country phone_number password password_confirmation skip_password_validation]
   end
-
-
 end

@@ -9,6 +9,6 @@ class DeviseMailer < Devise::Mailer
 
   def add_inline_attachment!
     image = Rails.root.join('app/assets/images/logo.png')
-   # attachments.inline['logo.png'] = File.read(image)
+    # attachments.inline['logo.png'] = File.read(image)
   end
 end
