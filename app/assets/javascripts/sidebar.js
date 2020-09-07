@@ -3,3 +3,8 @@ function toggleSidebar(){
 	document.getElementById("main").classList.toggle('active');
 
 }
+
+function uploadImage(){
+	document.getElementById("profile-pic").classList.toggle('active');
+
+}

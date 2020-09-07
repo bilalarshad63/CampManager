@@ -39,12 +39,15 @@ gem 'country_select', require: 'country_select_without_sort_alphabetical'
 gem 'jquery-rails'
 gem 'strong_password', '~> 0.0.9'
 
-# devise
+#devise for auth and invitations
 gem 'devise'
-# bootstrap
+gem 'devise_invitable'
+#bootstrap
 gem 'bootstrap'
 # sql
 gem 'mysql2'
+#kaminari for pagination
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

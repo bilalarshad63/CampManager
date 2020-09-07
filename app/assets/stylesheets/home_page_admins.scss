@@ -2,6 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#logo{
+	width:80px;
+	height:80px;
+}
+
+.image-upload > input
+{
+   display: none;
+}
+.image-upload > label{
+  cursor:pointer;
+}
+
+.img-circular{
+ width: 170px;
+ height: 170px;
+ margin: 0 auto;
+ background-size: cover;
+ display: block;
+ border-radius: 100px;
+ -webkit-border-radius: 100px;
+ -moz-border-radius: 100px;
+}
+.form-content{
+	
+	padding: 20px;
+}
+
 #container{
 	width:100%;
 	padding-left:50px;
@@ -28,6 +56,14 @@ float:right;
 .table_icons{
 	color:#06810C;
 	font-size:10px;
+}
+
+#profile-pic{
+	
+}
+
+#profile-pic.active{
+	left:-100px;
 }
 
 #sidebar{
