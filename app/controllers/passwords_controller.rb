@@ -1,5 +1,5 @@
 class PasswordsController < Devise::PasswordsController
- def create
+  def create
     self.resource = resource_class.send_reset_password_instructions(resource_params)
     if successfully_sent?(resource)
       render :new
@@ -13,10 +13,10 @@ class PasswordsController < Devise::PasswordsController
   end
 
   def update
-    super       
+    super
   end
 
   def edit
-    super   
+    super
   end
 end

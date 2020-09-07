@@ -1,3 +1,3 @@
 class Admin::RegistrationsController < Devise::RegistrationsController
-  #Your Code Here
+  # Your Code Here
 end
