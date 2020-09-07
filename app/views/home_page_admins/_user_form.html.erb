@@ -2,7 +2,8 @@
 <div  class="container" >
   <div class="main-content card card-block form-content">
     <div class="text-center" style="padding-top: 20px;">
-      <%= form_with url: update_user_by_admin_path, method: :put, local: true do |f| %>
+
+      <%= form_with model: user, url:update_user_by_admin_path, local: true do |f| %>
        <% if user.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
@@ -12,9 +13,7 @@
             <% end %>
             </ul>
           </div>
-        <% end %>
-
-      
+        <% end %>      
         <div class="image-upload" id="profile-pic" >
           <% if user.image.attached? %>
               <%= image_tag user.image, :class=> "img-circular"  %> 
@@ -25,52 +24,48 @@
           </label>
            <%= f.file_field :image, id:"file-input" %>
         </div>
-
-       
-
-        
-
         <div class="row">
           <div class="field col-4">
-            <%= f.label :first_name, "First Name:*"%><br />
-            <%= f.text_field :first_name, value: user.first_name,autofocus: true, autocomplete: "first_name", class: 'w_100'%>
+            <%= f.label :first_name%><br />
+            <%= f.text_field :first_name,autofocus: true, autocomplete: "first_name", class: 'w_100'%>
           </div>
           <div class="field col-4">
-            <%= f.label :middle_name %><br />
-            <%= f.text_field :middle_name, value: user.middle_name,autofocus: true, autocomplete: "middle-name", class: 'w_100'%>
+            <%= f.label :middle_name%><br />
+            <%= f.text_field :middle_name,autofocus: true, autocomplete: "middle-name", class: 'w_100'%>
           </div>
           <div class="field col-4">
-            <%= f.label :last_name, "Last Name:*" %><br />
-            <%= f.text_field :last_name,value: user.last_name, autofocus: true, autocomplete: "last-name", class: 'w_100'%>
+            <%= f.label :last_name%><br />
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name", class: 'w_100'%>
           </div>
         </div>
         <div class="row">
           <div class="field col-6">
-            <%= f.label :email, "Email Address:*"%><br />
-            <%= f.email_field :email,value: user.email, autofocus: true, autocomplete: "email", class: 'w_100'%>
+            <%= f.label :email%><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w_100'%>
           </div>
           <div class="field col-6">
-            <%= f.label :country, "Country:*" %><br />
-            <%= f.country_select :country, {}, {class: "btn border border-info"}, autofocus: true, autocomplete: "country"%>
+            <%= f.label :country %><br />
+            <%= f.country_select :country, [user.country], {class: "btn border border-info"}, autofocus: true, autocomplete: "country"%>
           </div>
         </div>
           <div class="field col-4" style="margin: 0 auto">
-            <%= f.label :phone_number, "Phone Number:*" %><br />
-            <%= f.number_field :phone_number, value: user.phone_number,autofocus: true, autocomplete: "phone-number", class:'quantity w_100'%>
+            <%= f.label :phone_number %><br />
+            <%= f.number_field :phone_number,autofocus: true, autocomplete: "phone-number", class:'quantity w_100'%>
           </div>
           <br>
-         <!--  <div class="field col-4">
-            <%= f.label :password, "Password:*" %>
+          <!-- <div>
+          <div class="field col-4">
+            <%= f.label :password %>
          
             <%= f.password_field :password, class: 'w_100'%>
           </div>
           <div class="field col-4">
-            <%= f.label :password_confirmation, "Password Confirmation:*" %><br />
+            <%= f.label :password_confirmation %><br />
             <%= f.password_field :password_confirmation, class: 'w_100'%>
           </div>
         </div> -->
                    
-        <%= f.submit "Update", class: 'btn btn-success'%>
+        <%= f.submit :Submit ,class:'btn btn-success'%>
       </div>
       <% end %>
     </div>

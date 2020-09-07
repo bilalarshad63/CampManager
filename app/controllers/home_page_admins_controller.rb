@@ -1,12 +1,35 @@
 class HomePageAdminsController < ApplicationController 
+	
+	 skip_before_action :verify_authenticity_token 
+
  before_action :authenticate_admin! , :get_users 
  before_action :set_user, only: [:show_user, :destroy,:edit_user,:update_user]
  layout 'admin_layout'
 
 	def index
-		@admin=current_admin.first_name 
 		@users=get_users
 	end
+
+	def new_user
+		@user=User.new
+	end
+
+	def create_user
+		@user=User.new(user_params)
+    @user.skip_password_validation = true
+    @user.skip_confirmation!
+    respond_to do |format|
+    if @user.save
+    	@user.invite!
+      format.html { redirect_to homepage_path, notice: 'User was successfully Created.' }
+      format.json { render :show, status: :ok, location: @user }
+    else
+      format.html { redirect_to homepage_path , notice: @user.errors }
+      format.json { render json: @user.errors, status: :unprocessable_entity }
+    end
+  end
+  end
+	
 
 	def show_user
 	end
@@ -14,14 +37,14 @@ class HomePageAdminsController < ApplicationController
 	def edit_user
 	end
 
-	def update_user
-		
+	def update_user		
+
    	respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to show_user_by_admin_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { redirect_to homepage_path , notice: 'User was Was not updated.' }
+        format.html { redirect_to homepage_path , notice: @user.errors }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -47,6 +70,6 @@ private
     end
 	
 	def user_params
-      params.permit(:first_name,:middle_name,:last_name,:email,:country,:phone_number,:image)
+      params.require(:user).permit(:first_name,:middle_name,:last_name,:email,:country,:phone_number,:password,:image)
     end
 end
