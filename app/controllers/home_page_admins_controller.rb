@@ -6,12 +6,8 @@ class HomePageAdminsController < ApplicationController
   layout 'admin_layout'
 
   def index
-    if sort_column && sort_direction
-      @users = User.order(sort_column + " " + sort_direction)
-    end
-    if params[:search]
-      @users = User.search(params[:search])
-    end
+    @users = User.order(sort_column => sort_direction) if sort_column && sort_direction.present?
+    @users = User.search(params[:search]) if params[:search].present?
   end
 
   def new_user

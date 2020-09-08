@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations', passwords: 'passwords' }
   resources :privacy, only: [:index]
+  resources :camp_locations
 
   # admin Routes
   devise_for :admins, controllers: { registrations: 'admin/registrations', sessions: 'admin/sessions' }
