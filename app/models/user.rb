@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :skip_password_validation
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
@@ -7,7 +8,8 @@ class User < ApplicationRecord
 
   has_one_attached :image
 
-  validates :password, presence: true, :on => :create ,unless: :skip_password_validation
+  validates :password, presence: true, unless: :skip_password_validation
+  validates :password, confirmation: { case_sensitive: true }
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :country, presence: true

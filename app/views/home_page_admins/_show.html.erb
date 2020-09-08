@@ -1,0 +1,60 @@
+<div class="container" style="width: 50rem; margin-top: 5%;">
+  <div class="main-content card card-block">
+    <div class="card-body text-center">
+      <% if user.class.name == 'User' %> 
+        <h2>User Profile</h2>
+        <% else %>
+        <h2>Admin Profile</h2>
+      <%end%>
+      <div id="container">
+        <% if user.image.attached? %>
+              <%= image_tag user.image, :class=> "img-circular"  %> 
+        <% end %>
+        <br>
+        <br>
+        <div id="left">Name</div>
+        <div id="right"><%= user.first_name + ' '+ user.middle_name + ' '+ user.last_name %></div>
+      </div>
+      <br>
+      <hr>
+      <div id="container">
+        <div id="left">Email</div>
+        <div id="right"><%= user.email %></div>
+      </div>
+      <br>
+      <hr>
+       <div id="container">
+        <div id="left">Phone Number</div>
+        <div id="right"><%= user.phone_number %></div>
+      </div>
+      <br>
+      <hr>
+       <div id="container">
+        <div id="left">Role</div>
+        <% if user.class.name == 'User' %> 
+        <div id="right"><%= User %></div>
+        <% else %>
+        <div id="right"><%= Admin %></div>
+        <% end %>
+
+      </div>
+      <br>
+      <% if user.class.name == 'User' %> 
+      <hr>
+       <div id="container">
+        <div id="left">Country</div>
+        <div id="right"><%= user.country%></div>
+      </div>
+      <br>
+      <% end %>
+      <hr>                 
+    </div>
+    <br>
+    <% if user.class.name == 'Admin' %> 
+    <div class="d-flex justify-content-center">
+      <%= link_to 'Edit Admin', edit_admin_path(user) ,class: 'btn btn-success'%>
+    </div>
+    <br>
+    <% end %>
+  </div>
+</div>
