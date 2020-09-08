@@ -1,7 +1,11 @@
 <div class="container" style="width: 50rem; margin-top: 5%;">
   <div class="main-content card card-block">
     <div class="card-body text-center">
-      <h2>Admin Profile</h2>
+      <% if user.class.name == 'User' %> 
+        <h2>User Profile</h2>
+        <% else %>
+        <h2>Admin Profile</h2>
+      <%end%>
       <div id="container">
         <% if user.image.attached? %>
               <%= image_tag user.image, :class=> "img-circular"  %> 
