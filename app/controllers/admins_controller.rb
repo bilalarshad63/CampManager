@@ -23,8 +23,10 @@ class AdminsController < ApplicationController
     end
   end
 
+private
+
   def set_user
-  	@admin =  current_admin
+    @admin =  current_admin
   end
 
   def admin_params

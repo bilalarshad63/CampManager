@@ -36,7 +36,6 @@ class HomePageAdminsController < ApplicationController
 		    end
 	  end
   end
-
 	
 private
 
