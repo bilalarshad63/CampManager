@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   #admin Routes
   devise_for :admins, controllers: {registrations: "admin/registrations",sessions: 'admin/sessions'}
+  resources :admins
+  #HomePage Admin Routes
   get '/admin', :to => 'home_page_admins#index' , as: 'homepage'
   get '/admin/users/new', :to => 'home_page_admins#new_user' , as: 'new_user_by_admin'
   get '/admin/users/:id(.:format)/show', :to => 'home_page_admins#show_user' , as: 'show_user_by_admin'
