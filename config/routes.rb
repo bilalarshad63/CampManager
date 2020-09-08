@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
     
+  
   devise_for :users, controllers: {registrations: "registrations", passwords: "passwords"}
   resources :users
   resources :privacy, only: [:index]
@@ -12,7 +13,6 @@ Rails.application.routes.draw do
   get '/admin/users/new', :to => 'home_page_admins#new_user' , as: 'new_user_by_admin'
   post '/admin/users/create', :to => 'home_page_admins#create_user' , as: 'create_user_by_admin'
   
-
-  root 'home#index'
+  root 'home_page_admins#index'
   
 end
