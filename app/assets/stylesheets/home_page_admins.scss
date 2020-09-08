@@ -91,8 +91,6 @@ float:right;
 	transition: all 500ms linear;
 }
 
-
-
 #sidebar ul li
 {
 	color:rgba(230,230,230,0.9);
@@ -115,4 +113,18 @@ float:right;
 	height:5px;
 	background:#151719;
 	margin: 5px 0px;
+}
+
+.pretty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.pretty th .asc {
+  /*background-image: url(/images/up_arrow.gif);*/
+}
+
+.pretty th .desc {
+  /*background-image: url(/images/down_arrow.gif);*/
 }

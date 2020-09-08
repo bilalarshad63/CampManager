@@ -35,8 +35,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'country_select', require: 'country_select_without_sort_alphabetical'
-gem 'filterrific'
 gem 'jquery-rails'
 gem 'strong_password', '~> 0.0.9'
 # devise for auth and invitations

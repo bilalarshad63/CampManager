@@ -1,25 +1,17 @@
 class HomePageAdminsController < ApplicationController
+  helper_method :sort_column, :sort_direction
   skip_before_action :verify_authenticity_token
   before_action :authenticate_admin!, :get_users
   before_action :set_user, only: %i[show_user destroy edit_user update_user]
   layout 'admin_layout'
 
   def index
-    @filterrific = initialize_filterrific(
-      User,
-      params[:filterrific],
-      select_options: {
-        sorted_by: User.options_for_sorted_by
-      }
-    ) || return
-    @users = @filterrific.find.page(params[:page])
-    respond_to do |format|
-      format.html
-      format.js
+    if sort_column && sort_direction
+      @users = User.order(sort_column + " " + sort_direction)
     end
-  rescue ActiveRecord::RecordNotFound => e
-    puts "Had to reset filterrific params: #{e.message}"
-    redirect_to(reset_filterrific_url(format: :html)) && return
+    if params[:search]
+      @users = User.search(params[:search])
+    end
   end
 
   def new_user
@@ -68,6 +60,13 @@ class HomePageAdminsController < ApplicationController
   end
 
   private
+  def sort_column
+    User.column_names.include?(params[:sort]) ? params[:sort] : "username"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 
   def get_users
     @users = User.all
@@ -78,6 +77,6 @@ class HomePageAdminsController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit %i[first_name middle_name last_name email country phone_number password image]
+    params.require(:user).permit %i[first_name middle_name last_name email country phone_number password image search]
   end
 end

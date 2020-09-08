@@ -5,33 +5,15 @@
       <div class="text-center" style="padding-top: 20px;">
         <h4>Users for Test Resident Camp</h4>
         <h6> <%= "Total Records " + @users.count.to_s + " of " + @users.count.to_s %> </h6>
-        <%= form_for_filterrific @filterrific do |f| %>
-          <div>
-            Search
-            <%= f.text_field(
-              :search_query,
-              class: 'filterrific-periodically-observed'
-            ) 
-            %>
-            <div class="g_colors any_links">
-              <%= link_to(
-                'Reset filters',
-                reset_filterrific_url,
-                class: 'g_color any_links'
-                ) %>
-            </div>
-          </div>
+        <%= form_with method: :get, local: true do |f| %>
+          <%= f.text_field :search,value: params[:search] %>
+          <%= f.submit 'Search' %>
         <% end %>
-        <%= render(
-          partial: 'home_page_admins/list',
-          locals: { students: @students }
-        ) %>
+        <%= render(partial: 'home_page_admins/list', locals: { user: @users})%>
       </div>
     </div>
   </div>
 </div>
-
-
 
 
 
