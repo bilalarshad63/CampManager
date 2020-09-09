@@ -4,8 +4,8 @@ module EmailHelper
     h2: 'margin-bottom: 10px; margin-top: 15px; font-size: 18px;',
     h3: 'margin-bottom: 10px; margin-top: 15px; font-size: 14px;',
     a: 'text-decoration: none; color: #32aeee;',
-    p: 'margin-bottom: 10px; line-height: 20px;'    
-  }
+    p: 'margin-bottom: 10px; line-height: 20px;'
+  }.freeze
 
   def email_tag(type, options = {}, &content)
     options[:style] ||= STYLES[type]

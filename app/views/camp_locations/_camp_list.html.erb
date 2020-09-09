@@ -1,0 +1,21 @@
+<div class="table-responsive pa_20">
+  <table id="mytable" class="table table-bordred table-striped">
+    <thead>
+      <th><%= sortable "name"%></th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <% @camp_locations.each do |camp_location| %>
+        <tr>
+          <td><%= camp_location.name %></td>
+          <td>
+            <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, camp_location_path(camp_location) %>
+            <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">create</i></button>'.html_safe, edit_camp_location_path(camp_location) %>
+            <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">delete</i></button>'.html_safe,camp_location_path(camp_location), method: :delete, data: { confirm: 'Are you sure?' }   %>
+          </td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+  <%= paginate @camp_locations %>
+</div>

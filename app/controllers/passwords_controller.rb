@@ -13,10 +13,10 @@ class PasswordsController < Devise::PasswordsController
   end
 
   def update
-    super       
+    super
   end
 
   def edit
-    super   
-	end
+    super
+  end
 end
