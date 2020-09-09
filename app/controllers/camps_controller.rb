@@ -10,15 +10,9 @@ class CampsController < ApplicationController
   end
 
   def toggle_status
-    if (@camp.camp_status == 1)
-      @camp.camp_status = 0
-    else
-      @camp.camp_status = 1
-    end
-       respond_to do |format|
-      if @camp.save
-        format.html { redirect_to homepage_camps_path}
-      end
+    @camp.camp_status == 1 ? (@camp.camp_status = 0) :  (@camp.camp_status = 1)       
+    if @camp.save
+      redirect_to homepage_camps_path
     end
   end
 
