@@ -36,9 +36,15 @@
                   <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">delete</i></button>'.html_safe,camp_path(camp), method: :delete, data: { confirm: 'Are you sure?' }   %>
                 </td>
                 <td >
-                  <div class="toggle-btn" onclick="this.classList.toggle('active')">
-                    <div class="inner-circle">  <%= link_to '.',toggle_status_camp_path(camp), method: :patch, remote: true   %>     </div>
+                  <% if camp.camp_status ==1 %>
+                  <div class="toggle-btn active" onclick="this.classList.toggle('active')">
+                    <div class="inner-circle"> <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_camp_path(camp),method: :patch %> </div>
                   </div>  
+                  <%else%>
+                  <div class="toggle-btn" onclick="this.classList.toggle('active')">
+                    <div class="inner-circle">  <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_camp_path(camp),method: :patch %></div>
+                  </div> 
+                  <%end%>
                                 
                 </td>
               </tr>
