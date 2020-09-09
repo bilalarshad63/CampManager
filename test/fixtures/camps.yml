@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  camp_title: MyString
+  camp_type: MyString
+  applicant_registration_start_date: 2020-09-08
+  applicant_registration_end_date: 2020-09-08
+  applicant_registration_start_time: 2020-09-08 17:14:11
+  applicant_registration_end_time: 2020-09-08 17:14:11
+  parent_application_start_date: 2020-09-08
+  parent_application_end_date: 2020-09-08
+  parent_application_start_time: 2020-09-08 17:14:11
+  parent_application_end_time: 2020-09-08 17:14:11
+
+two:
+  camp_title: MyString
+  camp_type: MyString
+  applicant_registration_start_date: 2020-09-08
+  applicant_registration_end_date: 2020-09-08
+  applicant_registration_start_time: 2020-09-08 17:14:11
+  applicant_registration_end_time: 2020-09-08 17:14:11
+  parent_application_start_date: 2020-09-08
+  parent_application_end_date: 2020-09-08
+  parent_application_start_time: 2020-09-08 17:14:11
+  parent_application_end_time: 2020-09-08 17:14:11

@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<div id="main"> 
+  <div class="container" style="padding: 20px;"> 
+    <div class="main-content card card-block">
+      <div class="text-center" style="padding-top: 20px;">
+        <h4>Camps for Test Resident Camp</h4>
+        <h6> <%= "Total Records " + @camps.count.to_s + " of "+ @camps.count.to_s %> </h6>
+
+        
+
+       <div class="table-responsive" style="padding: 20px;">
+        <table id="mytable" class="table table-bordred table-striped">
+          <thead>
+            <th><input type="checkbox" id="checkall" /></th>
+            <th>Title</th>
+            <th>Camp Type</th>
+            <th>Camp Location</th>
+            <th>Status</th>
+            <th>Registration Date</th>
+            <th>Actions</th>
+            <th></th>
+          </thead>
+          
+          <tbody>
+            <% @camps.each do |camp| %>
+              <tr>
+                <td><input type="checkbox" class="checkthis" /></td>
+                <td> <%= camp.camp_title %> </td>
+                <td> <%= camp.camp_type %> </td>
+                <td> Location</td>
+                <td> <%= camp.camp_status %> </td>
+                <td> <%= camp.applicant_registration_start_date %> </td>
+                <td>
+                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, camp_path(camp) %>
+                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">create</i></button>'.html_safe, edit_camp_path(camp) %>
+                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">delete</i></button>'.html_safe,camp_path(camp), method: :delete, data: { confirm: 'Are you sure?' }   %>
+                </td>
+                <td >
+                  <% if camp.camp_status ==1 %>
+                  <div class="toggle-btn active" onclick="this.classList.toggle('active')">
+                    <div class="inner-circle"> <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_camp_path(camp),method: :patch %> </div>
+                  </div>  
+                  <%else%>
+                  <div class="toggle-btn" onclick="this.classList.toggle('active')">
+                    <div class="inner-circle">  <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_camp_path(camp),method: :patch %></div>
+                  </div> 
+                  <%end%>
+                                
+                </td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+        </div>
+        <%= link_to 'Add New Camp' ,new_camp_path,class: 'btn btn-success text-light'%>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

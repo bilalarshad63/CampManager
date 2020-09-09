@@ -3,20 +3,20 @@
   <div class="main-content card card-block form-content">
     <div class="text-center" style="padding-top: 20px;">
 
-      <%= form_with model: user, url:update_user_by_admin_path, local: true do |f| %>
-       <% if user.errors.any? %>
+      <%= form_with model: @user, local: true do |f| %>
+       <% if @user.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
             <ul>
-            <% user.errors.full_messages.each do |message| %>
+            <% @user.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
             </ul>
           </div>
         <% end %>      
         <div class="image-upload" id="profile-pic" >
-          <% if user.image.attached? %>
-              <%= image_tag user.image, :class=> "img-circular"  %> 
+          <% if @user.image.attached? %>
+              <%= image_tag @user.image, :class=> "img-circular"  %> 
           <% end %>
           <label for="file-input">
             <br>
@@ -45,7 +45,7 @@
           </div>
           <div class="field col-6">
             <%= f.label :country %><br />
-            <%= f.country_select :country, [user.country], {class: "btn border border-info"}, autofocus: true, autocomplete: "country"%>
+            <%= f.country_select :country, [@user.country], {class: "btn border border-info"}, autofocus: true, autocomplete: "country"%>
           </div>
         </div>
           <div class="field col-4" style="margin: 0 auto">
@@ -53,17 +53,17 @@
             <%= f.number_field :phone_number,autofocus: true, autocomplete: "phone-number", class:'quantity w_100'%>
           </div>
           <br>
-          <!-- <div>
-          <div class="field col-4">
+          <div class="row">
+          <div class="field col-6">
             <%= f.label :password %>
          
             <%= f.password_field :password, class: 'w_100'%>
           </div>
-          <div class="field col-4">
+          <div class="field col-6">
             <%= f.label :password_confirmation %><br />
             <%= f.password_field :password_confirmation, class: 'w_100'%>
           </div>
-        </div> -->
+        </div>
                    
         <%= f.submit :Submit ,class:'btn btn-success'%>
       </div>

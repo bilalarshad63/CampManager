@@ -2,6 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+.toggle-btn{
+	margin-top:13px;
+	width:40px;
+	height:20px;
+	background:gray;
+	border-radius:30px;
+	padding: 5px;
+	transition: all 200ms linear;
+}
+
+.toggle-btn > .inner-circle
+{
+	width:12px;
+	height:12px;
+	background:#fff;
+	border-radius:50%;
+}
+
+.toggle-btn.active
+{	
+	background:#06810C;
+	transition: all 200ms linear;
+
+}
+.toggle-btn.active  > .inner-circle
+{
+	margin-left:20px;
+}
+
+
+.pad-20{
+	padding: 50px;
+}
+
 #logo{
 	width:80px;
 	height:80px;
@@ -13,6 +49,19 @@
 }
 .image-upload > label{
   cursor:pointer;
+}
+
+.img-admin{
+
+ width: 50px;
+ height: 50px;
+ margin-left: 5px;
+ margin-right: 5px;
+ background-size: cover;
+ display: block;
+ border-radius: 100px;
+ -webkit-border-radius: 100px;
+ -moz-border-radius: 100px;
 }
 
 .img-circular{
@@ -52,6 +101,14 @@ float:right;
 	
 }
 
+
+.btn-transparent{
+	background-color: "transparent";
+}
+
+.noHover{
+    pointer-events: none;
+}
 
 .table_icons{
 	color:#06810C;
