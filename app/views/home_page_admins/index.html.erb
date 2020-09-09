@@ -4,53 +4,24 @@
     <div class="main-content card card-block">
       <div class="text-center" style="padding-top: 20px;">
         <h4>Users for Test Resident Camp</h4>
-        <h6> <%= "Total Records " + @users.count.to_s + " of "+ @users.count.to_s %> </h6>
 
-        
-
-       <div class="table-responsive" style="padding: 20px;">
-        <table id="mytable" class="table table-bordred table-striped">
-          <thead>
-            <th><input type="checkbox" id="checkall" /></th>
-            <th>User ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-            <th>Country</th>
-            <th>Actions</th>
-          </thead>
-          
-          <tbody>
-            <% @users.each do |user| %>
-              <tr>
-                <td><input type="checkbox" class="checkthis" /></td>
-                <td> <%= user.id %> </td>
-                <td> <%= user.first_name + " " + user.middle_name + " " + user.last_name %> </td>
-                <td> <%= user.email %> </td>
-                <td> <%= user.phone_number %> </td>
-                <td> <%= user.country %> </td>
-                <td>
-                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, user_path(user) %>
-                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">create</i></button>'.html_safe, edit_user_path(user) %>
-                  <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">delete</i></button>'.html_safe,user_path(user), method: :delete, data: { confirm: 'Are you sure?' }   %>
-                </td>
-              </tr>
-            <%end%>
-          </tbody>
-        </table>
-        <div class="d-flex justify-content-center">
-        <%= paginate @users %>
+        <div class="row">
+        <div class="col">
+        <div class="col">
+           <h6> <%= "Total Records " + @users.count.to_s + " of " + @users.count.to_s %> </h6>
         </div>
-        <%= link_to 'Add New User' ,new_user_by_admin_path,class: 'btn btn-success'%>
-        &nbsp;&nbsp;&nbsp;
-        <%= link_to 'Download CSV list', homepage_path(format: :csv) ,class: 'btn btn-success'%>
-      </div>
+        <div class="col">
+          <%= form_with method: :get, local: true do |f| %>
+            <%= f.text_field :search,value: params[:search] %>
+            <%= f.submit 'Search' %>
+          <% end %> 
+        </div>
+        </div>
+        <%= render(partial: 'home_page_admins/list', locals: { user: @users})%>
       </div>
     </div>
   </div>
 </div>
-
-
 
 
 

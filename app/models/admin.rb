@@ -10,6 +10,7 @@ class Admin < ApplicationRecord
   validates_presence_of :first_name
   validates_presence_of :last_name
   validates_presence_of :phone_number
+
   validates :password, presence: true, unless: :skip_password_validation
   validates :password, confirmation: { case_sensitive: true }
 
@@ -18,5 +19,4 @@ class Admin < ApplicationRecord
     return false if skip_password_validation
     super
   end
-  
 end
