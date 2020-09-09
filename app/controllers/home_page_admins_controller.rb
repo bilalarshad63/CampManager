@@ -2,6 +2,7 @@ class HomePageAdminsController < ApplicationController
 	
  	skip_before_action :verify_authenticity_token 
 	before_action :authenticate_admin! , :get_users 
+	before_action :get_camps, only: [:show_camps]
  
  	layout 'admin_layout'
 
@@ -15,6 +16,9 @@ class HomePageAdminsController < ApplicationController
 	      headers['Content-Type'] ||= 'text/csv'
 	    end
 	  end
+	end
+
+	def show_camps
 	end
 
 	def new_user
@@ -41,6 +45,10 @@ private
 
 	def get_users
 		@users=User.order(:last_name).page(params[:page])
+ 	end
+
+ 	def get_camps
+		@camps=Camp.all
  	end
 	
 	def user_params
