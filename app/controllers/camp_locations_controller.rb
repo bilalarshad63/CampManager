@@ -29,7 +29,7 @@ class CampLocationsController < ApplicationController
   end
 
   def update
-    if @camp_location.update!
+    if @camp_location.update(camp_location_params)
       redirect_to @camp_location, alert: 'Camp location updated successfully.'
     else
       render 'edit'

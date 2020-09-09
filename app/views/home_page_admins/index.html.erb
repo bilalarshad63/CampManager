@@ -4,11 +4,20 @@
     <div class="main-content card card-block">
       <div class="text-center" style="padding-top: 20px;">
         <h4>Users for Test Resident Camp</h4>
-        <h6> <%= "Total Records " + @users.count.to_s + " of " + @users.count.to_s %> </h6>
-        <%= form_with method: :get, local: true do |f| %>
-          <%= f.text_field :search,value: params[:search] %>
-          <%= f.submit 'Search' %>
-        <% end %>
+        <div class="row">
+        <div class="col">
+        <%= link_to 'Camp Locations', camp_locations_path,class: 'w_color btn btn-success'%>
+        </div>
+        <div class="col">
+           <h6> <%= "Total Records " + @users.count.to_s + " of " + @users.count.to_s %> </h6>
+        </div>
+        <div class="col">
+          <%= form_with method: :get, local: true do |f| %>
+            <%= f.text_field :search,value: params[:search] %>
+            <%= f.submit 'Search' %>
+          <% end %> 
+        </div>
+        </div>
         <%= render(partial: 'home_page_admins/list', locals: { user: @users})%>
       </div>
     </div>
