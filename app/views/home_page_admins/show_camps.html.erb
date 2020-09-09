@@ -52,6 +52,9 @@
           </tbody>
         </table>
         <div class="d-flex justify-content-center">
+        <%= paginate @camps %>
+        </div>    
+        <div class="d-flex justify-content-center">
         </div>
         <%= link_to 'Add New Camp' ,new_camp_path,class: 'btn btn-success text-light'%>
       </div>

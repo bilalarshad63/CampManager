@@ -48,7 +48,7 @@ private
  	end
 
  	def get_camps
-		@camps=Camp.all
+		@camps=Camp.page(params[:page])
  	end
 	
 	def user_params
