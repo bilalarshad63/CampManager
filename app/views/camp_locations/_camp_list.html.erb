@@ -1,12 +1,11 @@
-<div class="table-responsive" style="padding: 20px;">
+<div class="table-responsive pa_20">
   <table id="mytable" class="table table-bordred table-striped">
     <thead>
       <th><%= sortable "name"%></th>
       <th>Actions</th>
     </thead>
     <tbody>
-
-      <% @camp_locations.each do |camp_location| %>
+      <% @camp_locations&.each do |camp_location| %>
         <tr>
           <td><%= camp_location.name %></td>
           <td>
@@ -18,5 +17,5 @@
       <%end%>
     </tbody>
   </table>
-  <%#= paginate @camp_locations %>
+  <%= paginate @camp_locations %>
 </div>

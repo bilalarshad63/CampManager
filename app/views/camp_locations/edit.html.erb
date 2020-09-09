@@ -5,20 +5,7 @@
     </div>
     <hr/>
     <div class="card-body login-form">
-      <%= form_with model: @camp_location, local: true do |f| %>
-        <div class="field col-12">
-          <%= f.label :name, "Location Name*"%><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'w_100' %>
-        </div>
-        <div class="row ml-1 mr-1">
-        	<div class="col-6">
-        		<a href="<%= camp_locations_path %>" class="w_100 g_color any_links btn border border-success" role="button" aria-disabled="true">Back</a>
-        	</div>
-	        <div class="actions col-6">
-	          <%= f.submit "Add Location", class: 'w_100 btn btn-success'  %>
-	        </div>
-    		</div>
-      <% end %>
+      <%= render 'form' %>
     </div>
   </div>
 </div>
