@@ -1,5 +1,6 @@
 class HomePageAdminsController < ApplicationController
   helper_method :sort_column, :sort_direction
+  include Concerns::ColumnSortable
   skip_before_action :verify_authenticity_token
   before_action :authenticate_admin!
   before_action :set_user, only: %i[show_user destroy edit_user update_user]
@@ -41,15 +42,19 @@ class HomePageAdminsController < ApplicationController
     end
   end
 
+  def model_class
+    User
+  end
+
   private
 
-  def sort_column
-    User.column_names.include?(params[:sort]) ? params[:sort] : "username"
-  end
+  # def sort_column
+  #   User.column_names.include?(params[:sort]) ? params[:sort] : "username"
+  # end
 
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
+  # def sort_direction
+  #   %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  # end
 
   def get_camps
     @camps=Camp.page(params[:page])

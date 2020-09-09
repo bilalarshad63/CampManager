@@ -1,6 +1,6 @@
 class CampLocationsController < ApplicationController
   require 'csv'
-  # include Concerns::ColumnSortable
+  include Concerns::ColumnSortable
   before_action :set_location, only: %i[show edit update destroy]
   helper_method :sort_column, :sort_direction
   def index
@@ -45,19 +45,23 @@ class CampLocationsController < ApplicationController
     end
   end
 
+  def model_class
+    CampLocation
+  end
+
   private
 
   def set_location
     @camp_location = CampLocation.find(params[:id])
   end
 
-  def sort_column
-    CampLocation.column_names.include?(params[:sort]) ? params[:sort] : "name"
-  end
+  # def sort_column
+  #   CampLocation.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  # end
 
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
+  # def sort_direction
+  #   %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  # end
 
   def camp_location_params
     params.require(:camp_location).permit(:name)
