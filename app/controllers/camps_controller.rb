@@ -15,7 +15,11 @@ class CampsController < ApplicationController
     else
       @camp.camp_status = 1
     end
-      @camp.save
+       respond_to do |format|
+      if @camp.save
+        format.html { redirect_to homepage_camps_path}
+      end
+    end
   end
 
   def edit

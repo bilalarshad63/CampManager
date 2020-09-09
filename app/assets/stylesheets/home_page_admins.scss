@@ -102,6 +102,14 @@ float:right;
 }
 
 
+.btn-transparent{
+	background-color: "transparent";
+}
+
+.noHover{
+    pointer-events: none;
+}
+
 .table_icons{
 	color:#06810C;
 	font-size:10px;
