@@ -1,5 +1,6 @@
 class CampLocationsController < ApplicationController
   require 'csv'
+  # include Concerns::ColumnSortable
   before_action :set_location, only: %i[show edit update destroy]
   helper_method :sort_column, :sort_direction
   def index
