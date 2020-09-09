@@ -25,6 +25,7 @@ class HomePageAdminsController < ApplicationController
     @user = User.new
   end
 
+
   def create_user
     @user = User.new(user_params)
     @user.skip_password_validation = true
@@ -56,7 +57,7 @@ class HomePageAdminsController < ApplicationController
   # end
 
   def get_camps
-    @camps=Camp.all
+    @camps=Camp.page(params[:page])
   end
 
   def set_user
@@ -66,4 +67,5 @@ class HomePageAdminsController < ApplicationController
   def user_params
     params.require(:user).permit %i[first_name middle_name last_name email country phone_number password password_confirmation image search]
   end
+
 end
