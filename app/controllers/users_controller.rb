@@ -1,12 +1,15 @@
 class UsersController < ApplicationController
 
-	before_action :set_user, only: [:show, :destroy,:edit,:update]
-	layout 'admin_layout'
+	before_action :set_user, only: [:show, :destroy, :edit,:update]
+	layout 'admin_layout', except: [:profile]
 
 	def show
 	end
 
 	def edit
+	end
+
+	def profile
 	end
 
 	def update	
@@ -34,12 +37,12 @@ class UsersController < ApplicationController
 
 	private
 
-		def set_user
-	    	@user = User.find(params[:id])
-		end
+	def set_user
+    	@user = User.find(params[:id])
+	end
 
-		def user_params
-  	params.require(:user).permit(:first_name,:middle_name,:last_name,:email,:country,:phone_number,:password,:password_confirmation,:image)
-		end
+	def user_params
+	params.require(:user).permit(:first_name,:middle_name,:last_name,:email,:country,:phone_number,:password,:password_confirmation,:image)
+	end
 
 end
