@@ -1,8 +1,11 @@
 class HomePageAdminsController < ApplicationController
-  helper_method :sort_column, :sort_direction
+
   include Concerns::ColumnSortable
-  skip_before_action :verify_authenticity_token
+  include Concerns::CampSortable
+
   before_action :authenticate_admin!
+  helper_method :sort_column, :sort_direction, :sort_camp_column, :sort_camp_direction
+  skip_before_action :verify_authenticity_token
   before_action :set_user, only: %i[show_user destroy edit_user update_user]
   before_action :get_camps, only: [:show_camps]
   layout 'admin_layout'
@@ -12,52 +15,50 @@ class HomePageAdminsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
-        headers['Content-Disposition'] = "attachment; filename=\"user-list\""
+        headers['Content-Disposition'] = "attachment; filename=\"user-list.csv\""
         headers['Content-Type'] ||= 'text/csv'
       end
     end
   end
 
 	def show_camps
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"camps-list.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
 	end
 
   def new_user
     @user = User.new
   end
 
-
   def create_user
     @user = User.new(user_params)
     @user.skip_password_validation = true
     @user.skip_confirmation!
-    respond_to do |format|
-      if @user.save
-        @user.invite!
-        format.html { redirect_to homepage_path, notice: 'User was successfully Created.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { redirect_to homepage_path, notice: @user.errors }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      @user.invite!
+      redirect_to homepage_path, notice: 'User was successfully Created.'         
+    else
+      redirect_to homepage_path, notice: @user.errors           
     end
   end
 
   def model_class
     User
   end
+  
+  def model_class_camp
+    Camp
+  end
 
   private
 
-  # def sort_column
-  #   User.column_names.include?(params[:sort]) ? params[:sort] : "username"
-  # end
-
-  # def sort_direction
-  #   %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  # end
-
   def get_camps
-    @camps=Camp.page(params[:page])
+    @camps=Camp.search(params[:search]).order(sort_camp_column => sort_camp_direction).page(params[:page])
   end
 
   def set_user

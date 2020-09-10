@@ -5,4 +5,11 @@ module ApplicationHelper
     direction = (column == sort_column && sort_direction == "asc") ? "desc" : "asc"
     link_to title, {:sort => column, :direction => direction}, {:class => css_class}
   end
+
+  def sortable_camp(column, title = nil)
+    title ||= column.titleize
+    css_class = (column == sort_camp_column) ? "current #{sort_camp_direction}" : nil
+    direction = (column == sort_camp_column && sort_camp_direction == "asc") ? "desc" : "asc"
+    link_to title, {:sort => column, :direction => direction}, {:class => css_class}
+  end
 end

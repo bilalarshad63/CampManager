@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: {registrations: "registrations", passwords: "passwords"}
   resources :users
   resources :privacy, only: [:index]
+
   resources :camp_locations do
     collection do
       get 'export_csv'
     end
   end
+  
   #admin Routes
   devise_for :admins, controllers: {registrations: "admin/registrations",sessions: 'admin/sessions'}
   resources :admins

@@ -19,3 +19,34 @@
 #marg-40{
 	margin:40px;
 }
+
+#main
+{
+	margin:0px;
+	transition: all 500ms linear;
+}
+#main.active
+{
+	margin-left:150px;
+	transition: all 500ms linear;
+}
+
+.secondary-bg-color
+{
+	background-color: #F2F9F2;
+}
+
+.primary-bg-color
+{
+	background-color: #06810C;
+}
+
+.secondary-color
+{
+	color: #F2F9F2;
+}
+
+.primary-color
+{
+	color: #06810C;
+}

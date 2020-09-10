@@ -1,6 +1,4 @@
 class Admin < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one_attached :image
   attr_accessor :skip_password_validation
 
@@ -15,6 +13,7 @@ class Admin < ApplicationRecord
   validates :password, confirmation: { case_sensitive: true }
 
   private
+  
   def password_required?
     return false if skip_password_validation
     super

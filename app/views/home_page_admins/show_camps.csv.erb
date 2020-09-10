@@ -1,0 +1,5 @@
+<%- headers = ['Camp Name','Camp Type', 'Camp Status' , 'Registeration Date' ,  'Expiry Date'] -%>
+<%= CSV.generate_line headers %>
+<%- @camps.each do |camp| -%>
+<%= CSV.generate_line([camp.camp_title, camp.camp_type, camp.camp_status, camp.applicant_registration_start_date ,camp.applicant_registration_end_date]) -%>
+<%- end -%>
