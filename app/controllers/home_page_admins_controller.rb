@@ -48,14 +48,6 @@ class HomePageAdminsController < ApplicationController
 
   private
 
-  # def sort_column
-  #   User.column_names.include?(params[:sort]) ? params[:sort] : "username"
-  # end
-
-  # def sort_direction
-  #   %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  # end
-
   def get_camps
     @camps=Camp.page(params[:page])
   end
