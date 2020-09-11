@@ -1,8 +1,9 @@
 <% if user_signed_in? %>
-<p>Hello <%= link_to current_user.username, profile_user_path(current_user.id) %>, 
-    <%= link_to "Sign_Out", destroy_user_session_path, :method => 'delete' %></p>
- <!--  <p>Hello <%#= current_user.first_name %> - <%#= link_to "Sign_Out", destroy_user_session_path, :method => 'delete' %></p>
-<% end %> -->
+	<p>
+		Hello <%= link_to current_user.username, profile_user_path(current_user.id), class: 'g_color any_links' %>, 
+  	<%= link_to "Sign_Out", destroy_user_session_path, :method => 'delete' %>
+  </p>
+<% end %>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <div id="main"> 
   <div class="container col-3 p_20 fpe"> 
