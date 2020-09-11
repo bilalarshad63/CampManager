@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show destroy edit update personal_info save_personal_info profile]
-  #ayout 'admin_layout', except: %i[edit profile update]
+  # layout 'admin_layout', except: %i[edit profile update]
 
   def index
     @user = current_user

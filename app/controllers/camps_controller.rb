@@ -4,22 +4,21 @@ class CampsController < ApplicationController
   before_action :set_camp, only: %i[show edit update destroy toggle_status]
   helper_method :sort_camp_column, :sort_camp_direction
 
+  # ayout 'admin_layout', except: [:index, :introduction]
 
-  #ayout 'admin_layout', except: [:index, :introduction]
-  
   def index
     if current_admin.nil?
-      @camps=Camp.all
+      @camps = Camp.all
       render 'user_camp_index'
     else
-    @camps = Camp.search(params[:search]).order(sort_camp_column => sort_camp_direction).page(params[:page])
-    respond_to do |format|
-      format.html
-      format.csv do
-        headers['Content-Disposition'] = 'attachment; filename="camps-list.csv"'
-        headers['Content-Type'] ||= 'text/csv'
+      @camps = Camp.search(params[:search]).order(sort_camp_column => sort_camp_direction).page(params[:page])
+      respond_to do |format|
+        format.html
+        format.csv do
+          headers['Content-Disposition'] = 'attachment; filename="camps-list.csv"'
+          headers['Content-Type'] ||= 'text/csv'
+        end
       end
-    end
     end
   end
 
@@ -27,9 +26,8 @@ class CampsController < ApplicationController
 
   def introduction
     @camp = Camp.find(params[:camp])
-    render template: "camps/introduction.html.erb"
+    render template: 'camps/introduction.html.erb'
   end
-
 
   def new
     @camp = Camp.new

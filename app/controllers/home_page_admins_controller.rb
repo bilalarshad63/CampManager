@@ -1,5 +1,4 @@
 class HomePageAdminsController < ApplicationController
-
   include Concerns::ColumnSortable
 
   before_action :authenticate_admin!
@@ -13,7 +12,7 @@ class HomePageAdminsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
-        headers['Content-Disposition'] = "attachment; filename=\"user-list.csv\""
+        headers['Content-Disposition'] = 'attachment; filename="user-list.csv"'
         headers['Content-Type'] ||= 'text/csv'
       end
     end
@@ -29,17 +28,16 @@ class HomePageAdminsController < ApplicationController
     @user.skip_confirmation!
     if @user.save
       @user.invite!
-      redirect_to homepage_path, notice: 'User was successfully Created.'         
+      redirect_to homepage_path, notice: 'User was successfully Created.'
     else
-      redirect_to homepage_path, notice: @user.errors           
+      redirect_to homepage_path, notice: @user.errors
     end
   end
 
   def model_class
     User
   end
-  
-  
+
   private
 
   def set_user
@@ -49,5 +47,4 @@ class HomePageAdminsController < ApplicationController
   def user_params
     params.require(:user).permit %i[first_name middle_name last_name email country phone_number password password_confirmation image search]
   end
-
 end
