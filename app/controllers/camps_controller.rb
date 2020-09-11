@@ -1,9 +1,19 @@
 class CampsController < ApplicationController
-  before_action :set_camp, only: [:show, :edit, :update, :destroy,:toggle_status]
+  before_action :authenticate_user!
   before_action :get_locations, only: [:new]
-  layout 'admin_layout'
+  before_action :set_camp, only: %i[show edit update destroy toggle_status]
+  layout 'admin_layout', except: [:index, :introduction]
 
-  def show
+
+  def show; end
+
+  def introduction
+    @camp = Camp.find(params[:camp])
+    render template: "camps/introduction.html.erb"
+  end
+
+  def index
+    @camps = Camp.all
   end
 
   def new
@@ -11,11 +21,13 @@ class CampsController < ApplicationController
   end
 
   def toggle_status
-    @camp.camp_status == 1 ? (@camp.camp_status = 0) :  (@camp.camp_status = 1)       
+    @camp.camp_status == 1 ? (@camp.camp_status = 0) : (@camp.camp_status = 1)
     if @camp.save
       redirect_to homepage_camps_path
     end
   end
+
+  def edit; end
 
   def create
     @camp = Camp.new(camp_params)
@@ -43,6 +55,7 @@ class CampsController < ApplicationController
   end
 
   private
+
     def set_camp
       @camp = Camp.find(params[:id])
     end

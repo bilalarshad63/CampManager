@@ -1,0 +1,34 @@
+<% if user_signed_in? %>
+	<p>
+		Hello <%= link_to current_user.username, profile_user_path(current_user.id), class: 'g_color any_links' %>, 
+  	<%= link_to "Sign_Out", destroy_user_session_path, :method => 'delete' %>
+  </p>
+<% end %>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<div id="main"> 
+  <div class="container col-3 p_20 fpe"> 
+    <div class="main-content card card-block">
+      <div class="ml-2" style="padding-top: 20px;">
+      	<h4 class="text-center">Select Camp</h4>
+	       <hr>
+	       <div class="table-responsive p_20">
+	       	 <%= form_tag intro_camps_path do %>
+		        <table id="mytable" class="table table-bordred table-striped">
+		          <p>Please Select the application you would like to access:</p>
+		          <tbody>
+		            <% @camps.each do |camp| %>
+		              <tr>
+		                <td><%= radio_button_tag :camp, "#{camp.id}", false, required: 'true' %> </td>
+		                <td><%= camp.camp_title %> </td> 
+		              </tr>
+		            <%end%>
+		          </tbody>
+		        </table>
+		        <div class="d-flex justify-content-center">
+	         <%= submit_tag :Continue , class:' su btn btn-success '%>
+	        <% end %>
+	      </div>
+      </div>
+    </div>
+  </div>
+</div>

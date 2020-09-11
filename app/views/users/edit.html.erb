@@ -1,70 +1,20 @@
-<div id="main">
-<div  class="container mt-4">
-  <div class="main-content card card-block form-content">
-    <div class="text-center pt-3" >
-      <%= form_with model: @user, local: true do |f| %>
-       <% if @user.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
-            <ul>
-            <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>      
-        <div class="image-upload" id="profile-pic" >
-          <% if @user.image.attached? %>
-              <%= image_tag @user.image, :class=> "img-circular"  %> 
-          <% end %>
-          <label for="file-input">
-            <br>
-            <i class="fas fa-camera fa-2x" onclick="uploadImage()"></i>
-          </label>
-           <%= f.file_field :image, id:"file-input" %>
-        </div>
-        <div class="row">
-          <div class="field col-4">
-            <%= f.label :first_name%><br />
-            <%= f.text_field :first_name,autofocus: true, autocomplete: "first_name", class: 'w_100'%>
-          </div>
-          <div class="field col-4">
-            <%= f.label :middle_name%><br />
-            <%= f.text_field :middle_name,autofocus: true, autocomplete: "middle-name", class: 'w_100'%>
-          </div>
-          <div class="field col-4">
-            <%= f.label :last_name%><br />
-            <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name", class: 'w_100'%>
-          </div>
-        </div>
-        <div class="row">
-          <div class="field col-6">
-            <%= f.label :email%><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w_100'%>
-          </div>
-          <div class="field col-6">
-            <%= f.label :country %><br />
-            <%= f.country_select :country, [@user.country], {class: "btn border border-info"}, autofocus: true, autocomplete: "country"%>
-          </div>
-        </div>
-          <div class="field col-4" style="margin: 0 auto">
-            <%= f.label :phone_number %><br />
-            <%= f.number_field :phone_number,autofocus: true, autocomplete: "phone-number", class:'quantity w_100'%>
-          </div>
-          <br>
-          <div class="row">
-          <div class="field col-6">
-            <%= f.label :password %>         
-            <%= f.password_field :password, class: 'w_100'%>
-          </div>
-          <div class="field col-6">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, class: 'w_100'%>
-          </div>
-        </div>                   
-        <%= f.submit :Submit ,class:'btn btn-success'%>
-      </div>
-      <% end %>
-    </div>
-  </div>
+<div class="container col-4 su" >
+  <div class="main-content card card-block">
+    <div class="ptlr_20">
+      <h1 class="text-center">Complete your Profile</h1>
+      <%= form_for @user do |f| %>
+			  <%= render "#{@user.current_step}_step", f: f %> 
+			  <div class= "row">
+			  	<div class="col">
+					  <p><%= f.submit "Previous", class: 'btn btn-secondary', name: 'back_button' unless @user.first_step?  %></p>
+					</div>
+			  	<div class="col">
+				  	<p><%= f.submit "Continue" , class: 'btn btn-success' unless @user.last_step?  %></p>
+					</div>
+				</div>
+			<% end %>
+			<%= link_to 'Back to Application Form', profile_user_path(current_user.id), class: 'w_color btn btn-success'%> 
+		</div>
+	</div>
 </div>
+

@@ -25,12 +25,22 @@ hr {
   margin: 0; 
 }
 
+.fs {
+  font-size: 12px;
+}
+
 .w_100 {
 	width: 100%;
 }
 
 .p_20 {
   padding-top: 20px;
+}
+
+.ptlr_20 {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .pa_20 {
@@ -90,4 +100,8 @@ hr {
 
 .su {
   margin-top: 40px;
+}
+
+.mb {
+  margin-bottom: 10px;
 }

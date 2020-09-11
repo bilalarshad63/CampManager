@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  attr_accessor :current_step
+  before_validation :add_username_in_db
   attr_accessor :skip_password_validation
   before_validation :add_username_in_db
   has_one_attached :image
@@ -22,6 +25,30 @@ class User < ApplicationRecord
 
   def add_username_in_db
     self.username = "#{first_name} #{last_name}"
+  end
+
+  def current_step
+    @current_step || steps.first
+  end
+
+  def steps
+    %w[education camp tech]
+  end
+
+  def next_step
+    self.current_step = steps[steps.index(current_step) + 1]
+  end
+
+  def previous_step
+    self.current_step = steps[steps.index(current_step) - 1]
+  end
+
+  def first_step?
+    current_step == steps.first
+  end
+
+  def last_step?
+    current_step == steps.last
   end
 
   private
