@@ -1,7 +1,9 @@
 class CampsController < ApplicationController
   before_action :authenticate_user!
+  before_action :get_locations, only: [:new]
   before_action :set_camp, only: %i[show edit update destroy toggle_status]
   layout 'admin_layout', except: [:index, :introduction]
+
 
   def show; end
 
@@ -29,45 +31,40 @@ class CampsController < ApplicationController
 
   def create
     @camp = Camp.new(camp_params)
-
-    respond_to do |format|
-      if @camp.save
-        format.html { redirect_to @camp, notice: 'Camp was successfully created.' }
-        format.json { render :show, status: :created, location: @camp }
-      else
-        format.html { render :new }
-        format.json { render json: @camp.errors, status: :unprocessable_entity }
-      end
+    if @camp.save
+      redirect_to @camp, notice: 'Camp was successfully created.' 
+    else
+      render :new 
     end
   end
 
+  def edit
+  end
+
   def update
-    respond_to do |format|
-      if @camp.update(camp_params)
-        format.html { redirect_to homepage_camps_path, notice: 'Camp was successfully updated.' }
-        format.json { render :show, status: :ok, location: @camp }
-      else
-        format.html { render :edit }
-        format.json { render json: @camp.errors, status: :unprocessable_entity }
-      end
+    if @camp.update(camp_params)
+      redirect_to homepage_camps_path, notice: 'Camp was successfully updated.' 
+    else
+      render :edit 
     end
   end
 
   def destroy
     @camp.destroy
-    respond_to do |format|
-      format.html { redirect_to homepage_camps_path, notice: 'Camp was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to homepage_camps_path, notice: 'Camp was successfully destroyed.' 
   end
 
   private
 
-  def set_camp
-    @camp = Camp.find(params[:id])
-  end
+    def set_camp
+      @camp = Camp.find(params[:id])
+    end
 
-  def camp_params
-    params.require(:camp).permit %i[camp_title camp_type camp_status applicant_registration_start_date applicant_registration_end_date applicant_registration_start_time applicant_registration_end_time parent_application_start_date parent_application_end_date parent_application_start_time parent_application_end_time]
-  end
+    def get_locations
+      @locations = CampLocation.all
+    end
+
+    def camp_params
+      params.require(:camp).permit(:camp_title, :camp_type,:camp_status, :applicant_registration_start_date, :applicant_registration_end_date, :applicant_registration_start_time, :applicant_registration_end_time, :parent_application_start_date, :parent_application_end_date, :parent_application_start_time, :parent_application_end_time,camp_location_ids:[])
+    end
 end

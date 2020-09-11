@@ -44,14 +44,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    if @user.destroy
-      respond_to do |format|
-        format.html { redirect_to homepage_path, notice: 'User was successfully destroyed.' }
-        format.json { head :no_content }
-      end
-    end
-  end
+	def destroy
+		if @user.destroy 
+			redirect_to homepage_path, notice: 'User was successfully destroyed.'
+			head :no_content 
+		end
+	end
 
   private
 

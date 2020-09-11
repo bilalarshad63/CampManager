@@ -11,15 +11,11 @@ class AdminsController < ApplicationController
 
   def update
     @admin.skip_password_validation = true
-  	respond_to do |format|
-      if @admin.update(admin_params)
-        bypass_sign_in(@admin)
-        format.html { redirect_to admin_path, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin }
-      else
-        format.html { redirect_to homepage_path , notice: @admin.errors }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
-      end
+    if @admin.update(admin_params)
+      bypass_sign_in(@admin)
+      redirect_to admin_path, notice: 'User was successfully updated.' 
+    else
+      redirect_to homepage_path , notice: @admin.errors 
     end
   end
 

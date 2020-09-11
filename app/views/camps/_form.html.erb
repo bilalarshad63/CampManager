@@ -1,12 +1,11 @@
 <div id="main">
-  <div  class="container" >
+  <div  class="container mt-5" >
     <div class="main-content card card-block form-content">
-      <div class="text-center" style="padding-top: 20px;">
+      <div class="text-center pt-3" >
         <%= form_with(model: camp, local: true) do |form| %>
           <% if camp.errors.any? %>
             <div id="error_explanation">
               <h2><%= pluralize(camp.errors.count, "error") %> prohibited this camp from being saved:</h2>
-
               <ul>
               <% camp.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
@@ -25,7 +24,17 @@
               <%= form.select :camp_type, ['virtual', 'real'],class: 'w-100'%>
             </div>
           </div>
-
+          <br>
+          <h4>Locations</h4>
+           <div class="field">
+            <%= form.collection_check_boxes :camp_location_ids, CampLocation.all, :id, :name do |location| %>
+              <div class="form-check form-check-inline">                
+                <%= location.check_box  class: 'form-check-input' %>
+                <%= location.label class:'form-check-label' %>
+              </div>
+            <% end %>
+          </div>
+          <br>
           <div class="row">
             <div class="field col-3">
               <%= form.label :applicant_registration_start_date %>
@@ -44,7 +53,6 @@
               <%= form.time_select :applicant_registration_end_time %>
             </div>
           </div>
-
           <div class="row">
             <div class="field col-3">
               <%= form.label :parent_application_start_date %>

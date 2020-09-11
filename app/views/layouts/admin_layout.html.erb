@@ -13,7 +13,7 @@
 
   </head>
   <body class="back">
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #F2F9F2;" >
+    <nav class="navbar navbar-expand-md navbar-dark secondary-bg-color"  >
     <button class="btn side_border buttons"  onclick="toggleSidebar()"><i class="material-icons table_icons">menu</i></i></button>
     <div id="sidebar">
       <span></span>
@@ -23,12 +23,11 @@
         <li> <%= link_to '<button class="btn side_border buttons text-light">Users<i class="material-icons table_icons text-light ">home</i></i></button>'.html_safe , homepage_path%></li>  
         <li> <%= link_to '<button class="btn side_border buttons text-light">Camps<i class="material-icons table_icons text-light ">home</i></i></button>'.html_safe , homepage_camps_path%></li> 
         <li> <%= link_to '<button class="btn side_border buttons text-light">Camp Locations<i class="material-icons table_icons text-light ">home</i></i></button>'.html_safe , camp_locations_path%></li> 
-
         <li>Users</li>
         <li>Application Data</li>
       </ul>
     </div>
-      <a class="navbar-brand buttons" href="#" style="color:#06810C;  margin-left: 10px; ">Camp Managment System</a>
+      <h4 class="navbar-brand buttons  ml-1 primary-color"  style="color:#06810C;   ">Camp Managment System</h4>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"> </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -45,15 +44,12 @@
         </form>
       </div>
     </nav>
-
-      
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
           <% end %>
           <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-
     <%= yield %>
   </body>
 </html>

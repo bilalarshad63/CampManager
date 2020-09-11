@@ -1,7 +1,7 @@
 <div class="table-responsive p_20">
   <table id="mytable" class="table table-bordred table-striped">
     <thead>
-      <th><input type="checkbox" id="checkall" /></th>
+      <th><input type="checkbox" /></th>
       <th><%= sortable "id"%></th>
       <th><%= sortable "username"%></th>
       <th><%= sortable "email"%></th>
@@ -12,12 +12,12 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><input type="checkbox" class="checkthis" /></td>
+          <td><input type="checkbox" /></td>
           <td> <%= user.id %> </td>
           <td> <%= user.first_name %> </td>
           <td> <%= user.email %> </td>
-          <td> <%= user.phone_number %> </td>
           <td> <%= user.country %> </td>
+          <td> <%= user.phone_number %> </td>
           <td>
             <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, user_path(user) %>
             <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">create</i></button>'.html_safe, edit_user_path(user) %>

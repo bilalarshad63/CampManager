@@ -1,18 +1,23 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: { registrations: 'registrations', passwords: 'passwords' }
   resources :users do
     member do
       get '/profile', to: 'users#profile', as: 'profile'
     end
   end
+
   resources :privacy, only: [:index]
+
   resources :camp_locations do
     collection do
       get 'export_csv'
     end
   end
-
+  
+  #admin Routes
   devise_for :admins, controllers: { registrations: 'admin/registrations', sessions: 'admin/sessions' }
+
   resources :admins
 
   get '/admin', to: 'home_page_admins#index', as: 'homepage'

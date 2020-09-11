@@ -1,11 +1,13 @@
 class User < ApplicationRecord
+
   attr_accessor :current_step
   before_validation :add_username_in_db
   attr_accessor :skip_password_validation
+  before_validation :add_username_in_db
+  has_one_attached :image
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-  has_one_attached :image
-
+  
   validates :password, presence: true, unless: :skip_password_validation
   validates :password, confirmation: { case_sensitive: true }
   validates :first_name, presence: true
@@ -53,7 +55,6 @@ class User < ApplicationRecord
 
   def password_required?
     return false if skip_password_validation
-
     super
   end
 end
