@@ -34,7 +34,7 @@
                       <div><%= location.name %></div>
                     <%end%>
                   </td>
-                  <td> <%= camp.camp_status==1 ? 'Active' : 'InActive' %> </td>
+                  <td id="statusR_<%= camp.id %>"> <%= camp.camp_status%> </td>
                   <td> <%= camp.applicant_registration_start_date %> </td>
                   <td>
                     <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, camp_path(camp) %>
@@ -43,12 +43,12 @@
                   </td>
                   <td >
                     <% if camp.camp_status ==1 %>
-                    <div class="toggle-btn active" onclick="this.classList.toggle('active')">
-                      <div class="inner-circle"> <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_camp_path(camp),method: :patch %> </div>
+                    <div class="toggle-btn active" id="togglebtn" onclick="this.classList.toggle('active')">
+                      <div class="inner-circle"> <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_camp_path(camp),method: :patch, remote: true %> </div>
                     </div>  
                     <%else%>
                     <div class="toggle-btn" onclick="this.classList.toggle('active')">
-                      <div class="inner-circle">  <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_camp_path(camp),method: :patch %></div>
+                      <div class="inner-circle">  <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_camp_path(camp),method: :patch,remote: true %></div>
                     </div> 
                     <%end%>                                  
                   </td>
@@ -62,7 +62,7 @@
           <div class="d-flex justify-content-center">
           </div>
           <%= link_to 'Add New Camp' ,new_camp_path,class: 'btn btn-success text-light'%>
-           <%= link_to 'Download CSV list', homepage_camps_path(format: :csv) ,class: 'btn btn-success'%>
+           <%= link_to 'Download CSV list', camps_path(format: :csv) ,class: 'btn btn-success'%>
         </div>
       </div>
     </div>

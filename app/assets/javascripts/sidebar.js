@@ -8,3 +8,9 @@ function uploadImage(){
 	document.getElementById("profile-pic").classList.toggle('active');
 
 }
+
+function toggleStatus(){
+	document.getElementById("togglebtn").classList.toggle('active');
+	
+
+}

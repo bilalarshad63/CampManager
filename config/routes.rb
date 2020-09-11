@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   resources :admins
   #HomePage Admin Routes
   get '/admin', :to => 'home_page_admins#index' , as: 'homepage'
-  get '/admin/camps', :to => 'home_page_admins#show_camps' , as: 'homepage_camps'
   get '/admin/users/new', :to => 'home_page_admins#new_user' , as: 'new_user_by_admin'
   post '/admin/users/create', :to => 'home_page_admins#create_user' , as: 'create_user_by_admin'
   
@@ -25,5 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'home_page_admins#index'
+  get '/users/:id(.:format)/personal_info', :to => 'users#personal_info' , as: 'user_personal_info_form'
+  patch '/users/:id(.:format)/personal_info/save', :to => 'users#save_personal_info' , as: 'save_user_personal_info'
+
+  root 'users#index'
+  
 end

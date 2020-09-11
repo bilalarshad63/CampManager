@@ -9,8 +9,7 @@ class CampLocationsController < ApplicationController
     @camp_locations = CampLocation.search(params[:search]).order(sort_column => sort_direction).page(params[:page])
   end
 
-  def new
-  end
+  def new; end
 
   def edit; end
 
@@ -53,8 +52,8 @@ class CampLocationsController < ApplicationController
   private
 
   def new_location
-     @camp_location = CampLocation.new
-   end
+    @camp_location = CampLocation.new
+  end
 
   def set_location
     @camp_location = CampLocation.find(params[:id])

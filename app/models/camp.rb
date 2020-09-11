@@ -13,6 +13,8 @@ class Camp < ApplicationRecord
 	validates :parent_application_start_time, presence: true
 	validates :parent_application_end_time, presence: true
 	validate :validate_time_date
+
+	#enum camp_status: { Active: 1, InActive: 0}
 	
 	def self.search(search)
     if search

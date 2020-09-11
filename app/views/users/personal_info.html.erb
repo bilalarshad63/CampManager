@@ -1,0 +1,74 @@
+<div id="main">
+<div  class="container mt-4">
+  <div class="main-content card card-block form-content">
+    <div class="text-center pt-3" >
+      <%= form_with model: @user,url: save_user_personal_info_path, local: true do |f| %>
+       <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+            <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>     
+        <h2> <%= @user.gender %> </h2>
+
+        <div class="image-upload" id="profile-pic" >
+          <% if @user.image.attached? %>
+              <%= image_tag @user.image, :class=> "img-circular"  %> 
+          <% end %>
+          <label for="file-input">
+            <br>
+            <i class="fas fa-camera fa-2x" onclick="uploadImage()"></i>
+          </label>
+           <%= f.file_field :image, id:"file-input" %>
+        </div>
+
+        <div class="row">
+          <div class="field col-4">
+            <%= f.label :first_name%><br />
+            <%= f.text_field :first_name,autofocus: true, autocomplete: "first_name", class: 'w_100'%>
+          </div>
+          <div class="field col-4">
+            <%= f.label :middle_name%><br />
+            <%= f.text_field :middle_name,autofocus: true, autocomplete: "middle-name", class: 'w_100'%>
+          </div>
+          <div class="field col-4">
+            <%= f.label :last_name%><br />
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name", class: 'w_100'%>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field col-6">
+            <%= f.label :email%><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w_100'%>
+          </div>          
+          <div class="field col-6">
+            <%= f.label :phone_number %><br />
+            <%= f.number_field :phone_number, autofocus: true, autocomplete: "phone-number", class:'quantity w_100'%>
+          </div>           
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="field">
+             <%= f.label :date_of_birth %><br />           
+            <%= f.date_select :date_of_birth  %>
+          </div>
+        </div>
+          <br>
+
+        <div class="field">
+          <%=f.label :gender %><br>
+          <%= f.radio_button :gender, 'man'%>MAN
+          <%= f.radio_button :gender, 'women'%>WOMEN 
+          <%= f.radio_button :gender, 'other'%>OTHER
+        </div>          
+        <%= f.submit :Submit, class:'btn btn-succes', id:'submit' %>
+        <%= link_to 'Skip', users_path,class: 'btn btn-success'%>
+        <%= link_to 'Back', users_path,class: 'btn btn-success'%>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
