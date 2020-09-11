@@ -105,6 +105,9 @@ ActiveRecord::Schema.define(version: 2020_09_10_192523) do
     t.string "username"
     t.string "gender"
     t.date "date_of_birth"
+    t.string "education"
+    t.string "camp_preference"
+    t.text "tech_reqs"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"
