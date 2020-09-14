@@ -1,9 +1,11 @@
 class User < ApplicationRecord
 
   attr_accessor :current_step
-  before_validation :add_username_in_db
   attr_accessor :skip_password_validation
+
   before_validation :add_username_in_db
+  before_validation :add_username_in_db
+  
   has_one_attached :image
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
@@ -16,6 +18,11 @@ class User < ApplicationRecord
   #validates :gender, inclusion: { in: %w(man women other ) }
   validates :phone_number, presence: true, format: { with: /(?:\+?\d{1,3}[- ]?)?\(?(?:\d{3})?\)?[- ]?\d{3}[- ]?\d{2}[- ]?\d{2}/, message: 'only allows numbers' }, length: { in: 7..25 }
   
+
+
+  def init
+    self.progress_bar ||= build_progress_bar
+  end
 
   def self.search(search)
     if search
@@ -34,7 +41,7 @@ class User < ApplicationRecord
   end
 
   def steps
-    %w[education camp tech]
+    %w[personal_info education camp tech]
   end
 
   def next_step

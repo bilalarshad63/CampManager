@@ -4,7 +4,8 @@ class CampsController < ApplicationController
   before_action :set_camp, only: %i[show edit update destroy toggle_status]
   helper_method :sort_camp_column, :sort_camp_direction
 
-  # ayout 'admin_layout', except: [:index, :introduction]
+
+  # layout 'admin_layout', except: [:index, :introduction]
 
   def index
     if current_admin.nil?
@@ -12,6 +13,7 @@ class CampsController < ApplicationController
       render 'user_camp_index'
     else
       @camps = Camp.search(params[:search]).order(sort_camp_column => sort_camp_direction).page(params[:page])
+      render :layout => 'admin_layout'
       respond_to do |format|
         format.html
         format.csv do

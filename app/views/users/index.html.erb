@@ -1,4 +1,11 @@
 hello
+<br><br>
 <%= @user.username %>
 <br>
-<%= link_to 'Continue Profile', user_personal_info_form_path(@user) ,class: 'btn btn-success'%>
+<br>
+<br>
+<%= link_to 'Continue Profile', profile_user_path(@user) ,class: 'btn btn-success'%> 
+<br>
+<br>
+<br>
+<%= link_to 'Camps', camps_path ,class: 'btn btn-success'%> 

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show destroy edit update personal_info save_personal_info profile]
   # layout 'admin_layout', except: %i[edit profile update]
+  before_action :authenticate_user!, only: [:index]
+
 
   def index
     @user = current_user
@@ -57,28 +59,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def personal_info; end
-
-  def save_personal_info
-    @user.skip_password_validation = true
-    if @user.update(personal_info_params)
-      redirect_to user_path, notice: 'User was successfully updated.'
-    else
-      redirect_to user_path, notice: @user.errors
-    end
-  end
-
   private
 
   def set_user
     @user = User.find(params[:id])
   end
 
-  def personal_info_params
-    params.require(:user).permit(:first_name, :middle_name, :last_name, :email, :phone_number, :date_of_birth, :gender, :image)
-  end
-
   def user_params
-    params.require(:user).permit %i[first_name middle_name last_name email country phone_number password password_confirmation image education camp_preference tech_reqs]
+    params.require(:user).permit %i[first_name middle_name last_name email country phone_number password password_confirmation image education camp_preference tech_reqs date_of_birth gender image]
   end
 end

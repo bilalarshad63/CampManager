@@ -44,6 +44,6 @@ Rails.application.routes.draw do
   get '/users/:id(.:format)/personal_info', :to => 'users#personal_info' , as: 'user_personal_info_form'
   patch '/users/:id(.:format)/personal_info/save', :to => 'users#save_personal_info' , as: 'save_user_personal_info'
 
-  root 'camps#index'
+  root 'users#index'
 
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  personal_info: false
+  education: false
+  camp_preference: false
+  tech_reqs: false
+
+two:
+  personal_info: false
+  education: false
+  camp_preference: false
+  tech_reqs: false

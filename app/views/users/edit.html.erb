@@ -1,5 +1,28 @@
-<div class="container col-4 su" >
-  <div class="main-content card card-block">
+<div class="container  su" >
+	<div class="progress">
+	  <div id="personal_info_tag" class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div id="education_tag" class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div id="camp_tag" class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div id="tech_tag" class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	</div>
+	<br>
+  <div class="main-content card card-block  p-2">
     <div class="ptlr_20">
       <h1 class="text-center">Complete your Profile</h1>
       <%= form_for @user do |f| %>
@@ -9,11 +32,11 @@
 					  <p><%= f.submit "Previous", class: 'btn btn-secondary', name: 'back_button' unless @user.first_step?  %></p>
 					</div>
 			  	<div class="col">
-				  	<p><%= f.submit "Continue" , class: 'btn btn-success' unless @user.last_step?  %></p>
-					</div>
+				  	<%= f.submit "Continue" , class: 'btn btn-success ' unless @user.last_step?  %>
+				</div>
 				</div>
 			<% end %>
-			<%= link_to 'Back to Application Form', profile_user_path(current_user.id), class: 'w_color btn btn-success'%> 
+			<%= link_to 'Back to Application Form', profile_user_path(current_user.id), class: 'w_color btn btn-success d-flex justify-content-center'%> 
 		</div>
 	</div>
 </div>
