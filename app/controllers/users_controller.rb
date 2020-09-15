@@ -3,8 +3,7 @@ class UsersController < ApplicationController
   # layout 'admin_layout', except: %i[edit profile update]
   before_action :authenticate_user!, only: [:index]
 
-
-  def index
+  def index 
     @user = current_user
   end
 

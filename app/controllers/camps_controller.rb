@@ -1,5 +1,6 @@
 class CampsController < ApplicationController
   include Concerns::CampSortable
+  
   before_action :get_locations, only: [:new]
   before_action :set_camp, only: %i[show edit update destroy toggle_status]
   helper_method :sort_camp_column, :sort_camp_direction
@@ -9,6 +10,7 @@ class CampsController < ApplicationController
 
   def index
     if current_admin.nil?
+      authenticate_user!
       @camps = Camp.all
       render 'user_camp_index'
     else

@@ -4,6 +4,7 @@ class CampLocationsController < ApplicationController
   before_action :set_location, only: %i[show edit update destroy]
   before_action :new_location, only: [:new]
   helper_method :sort_column, :sort_direction
+  layout 'admin_layout'
 
   def index
     @camp_locations = CampLocation.search(params[:search]).order(sort_column => sort_direction).page(params[:page])

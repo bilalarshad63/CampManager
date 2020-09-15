@@ -2,6 +2,7 @@
   <div class="container mt-5 w-50">
     <div class="main-content card card-block">
       <div class="card-body text-center">
+        <%= link_to "Back", homepage_path, class: 'btn btn-success w_color'%>
         <% if user.class.name == 'User' %> 
           <h2>User Profile</h2>
           <% else %>

@@ -7,7 +7,6 @@
     <hr/>
     <div class="card-body login-form">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= flash[:alert]%>
         <div class="field col-12 ">
           <%= f.label :email, "Email Address:*"%><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w_100' %>
