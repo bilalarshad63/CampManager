@@ -1,0 +1,70 @@
+<div>
+  <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> Not saved:</h2>
+            <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>     
+      <%= form_for @user, url: camp_application_path(@camp_application), method: :patch do |user| %>
+        <div class="image-upload" id="profile-pic" >
+          <% if @user.image.attached? %>
+            <%= image_tag @user.image, :class=> "img-circular"  %> 
+          <% end %>
+          <label for="file-input">
+            <br>
+            <i class="fas fa-camera fa-2x " onclick="uploadImage()"></i>
+          </label>
+           <%= user.file_field :image, id:"file-input" %>
+        </div>
+
+        <div class="row">
+          <div class="field col-4">
+            <%= user.label :first_name%><br />
+            <%= user.text_field :first_name,autofocus: true, autocomplete: "first_name", class: 'w_100'%>
+          </div>
+          <div class="field col-4">
+            <%= user.label :middle_name%><br />
+            <%= user.text_field :middle_name,autofocus: true, autocomplete: "middle-name", class: 'w_100'%>
+          </div>
+          <div class="field col-4">
+            <%= user.label :last_name%><br />
+            <%= user.text_field :last_name, autofocus: true, autocomplete: "last-name", class: 'w_100'%>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field col-6">
+            <%= user.label :email%><br />
+            <%= user.email_field :email, autofocus: true, autocomplete: "email", class: 'w_100'%>
+          </div>          
+          <div class="field col-6">
+            <%= user.label :phone_number %><br />
+            <%= user.text_field :phone_number, autofocus: true, autocomplete: "phone-number", class:'quantity w_100'%>
+          </div>           
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="field">
+             <%= user.label :date_of_birth %><br />           
+            <%= user.date_select :date_of_birth  %>
+          </div>
+        </div>
+        <br>
+
+        <div class="row d-flex justify-content-center">
+          <div class="field">
+            <%=user.label :gender %><br>
+            <%= user.radio_button :gender, 'man'%>MAN
+            <%= user.radio_button :gender, 'women'%>WOMEN 
+            <%= user.radio_button :gender, 'other'%>OTHER
+          </div>
+        </div>
+        <div class="row">
+          <div class="col"><%= f.submit "Previous" , class: 'btn btn-secondary', name: 'back_button'   %></div>
+          <div class="col d-flex justify-content-end"><%= f.submit "Continue" , class: 'btn btn-success'  %></div>
+        </div>
+    <%end%>
+
+</div>

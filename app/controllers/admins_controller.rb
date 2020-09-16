@@ -1,32 +1,28 @@
 class AdminsController < ApplicationController
-
-  before_action :set_user, only: [:edit,:update,:show]
+  before_action :set_user, only: %i[edit update show]
   layout 'admin_layout'
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @admin.skip_password_validation = true
     if @admin.update(admin_params)
       bypass_sign_in(@admin)
-      redirect_to admin_path, notice: 'User was successfully updated.' 
+      redirect_to admin_path, notice: 'User was successfully updated.'
     else
-      redirect_to homepage_path , notice: @admin.errors 
+      redirect_to homepage_path, notice: @admin.errors
     end
   end
 
-private
+  private
 
   def set_user
-    @admin =  current_admin
+    @admin = current_admin
   end
 
   def admin_params
-    params.require(:admin).permit(:first_name,:middle_name,:last_name,:email,:phone_number,:password,:password_confirmation,:image)
+    params.require(:admin).permit(:first_name, :middle_name, :last_name, :email, :phone_number, :password, :password_confirmation, :image)
   end
-
 end

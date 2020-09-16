@@ -18,4 +18,6 @@
     </tbody>
   </table>
   <%= paginate @camp_locations %>
+<%= link_to 'Add New Location' ,new_camp_location_path,class: 'w_color btn btn-success'%>
+<%= link_to 'Export CSV', export_csv_camp_locations_path(format: "csv"),  class: 'w_color btn btn-success' %>
 </div>
