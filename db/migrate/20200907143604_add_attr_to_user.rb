@@ -6,6 +6,6 @@ class AddAttrToUser < ActiveRecord::Migration[5.2]
     add_column :users, :tech_reqs, :text
     add_column :users, :gender, :string
   	add_column :users, :date_of_birth, :date
-  	add_column :users, :form_count, :integer
+  	add_column :users, :form_count, :integer, :default => 0
   end
 end

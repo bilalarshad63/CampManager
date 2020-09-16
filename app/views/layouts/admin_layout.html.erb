@@ -12,6 +12,9 @@
     
 
   </head>
+
+
+
   <body class="back">
     <nav class="navbar navbar-expand-md navbar-dark secondary-bg-color"  >
     <button class="btn side_border buttons"  onclick="toggleSidebar()"><i class="material-icons table_icons">menu</i></i></button>
@@ -44,6 +47,13 @@
         </form>
       </div>
     </nav>
+
+    <% if notice %>
+      <p class="alert alert-success" id="move-notify"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+      <p class="alert alert-danger"id="move-notify"><%= alert %></p>
+    <% end %> 
     
     <%= yield %>
   </body>

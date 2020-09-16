@@ -34,7 +34,7 @@
                       <div><%= location.name %></div>
                     <%end%>
                   </td>
-                  <td id="statusR_<%= camp.id %>"> <%= camp.camp_status%> </td>
+                  <td id="status_<%= camp.id %>"> <%= camp.camp_status%> </td>
                   <td> <%= camp.applicant_registration_start_date %> </td>
                   <td>
                     <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, camp_path(camp) %>
@@ -42,7 +42,7 @@
                     <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">delete</i></button>'.html_safe,camp_path(camp), method: :delete, data: { confirm: 'Are you sure?' }   %>
                   </td>
                   <td >
-                    <% if camp.camp_status ==1 %>
+                    <% if camp.camp_status == 'Active' %>
                     <div class="toggle-btn active" id="togglebtn" onclick="this.classList.toggle('active')">
                       <div class="inner-circle"> <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_camp_path(camp),method: :patch, remote: true %> </div>
                     </div>  

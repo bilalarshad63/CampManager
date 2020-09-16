@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_221336) do
   create_table "camps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "camp_title"
     t.string "camp_type"
-    t.integer "camp_status"
+    t.string "camp_status"
     t.date "applicant_registration_start_date"
     t.date "applicant_registration_end_date"
     t.time "applicant_registration_start_time"
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_221336) do
     t.text "tech_reqs"
     t.string "gender"
     t.date "date_of_birth"
-    t.integer "form_count"
+    t.integer "form_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

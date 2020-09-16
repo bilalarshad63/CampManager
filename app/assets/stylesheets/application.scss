@@ -25,6 +25,17 @@
 	margin:0px;
 	transition: all 500ms linear;
 }
+#move-notify
+{
+	margin:0px;
+	transition: all 500ms linear;
+}
+#move-notify.active
+{
+	margin-left:200px;
+	transition: all 500ms linear;
+}
+
 #main.active
 {
 	margin-left:150px;
