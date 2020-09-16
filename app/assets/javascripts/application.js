@@ -14,6 +14,7 @@
 //= require turbolinks
 //= require_tree .
 //= require sidebar
+//= require progressbar
 //= require jquery
 //= require rails-ujs
 //= require_self

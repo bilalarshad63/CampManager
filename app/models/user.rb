@@ -1,14 +1,15 @@
 class User < ApplicationRecord
   has_many :camp_applications
   has_many :camps, through: :camp_applications
-  # attr_accessor :current_step
   attr_accessor :skip_password_validation
 
   before_validation :add_username_in_db
   has_one_attached :image
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
+
   validates :password, password: true, unless: :skip_password_validation
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :country, presence: true
@@ -17,10 +18,6 @@ class User < ApplicationRecord
   def country_name
     country = self.country
     ISO3166::Country[country]
-  end
-
-  def init
-    self.progress_bar ||= build_progress_bar
   end
 
   def self.search(search)
@@ -34,30 +31,6 @@ class User < ApplicationRecord
   def add_username_in_db
     self.username = "#{first_name} #{last_name}"
   end
-
-  # def current_step
-  #   @current_step || steps.first
-  # end
-
-  # def steps
-  #   %w[personal_info education camp tech]
-  # end
-
-  # def next_step
-  #   self.current_step = steps[steps.index(current_step) + 1]
-  # end
-
-  # def previous_step
-  #   self.current_step = steps[steps.index(current_step) - 1]
-  # end
-
-  # def first_step?
-  #   current_step == steps.first
-  # end
-
-  # def last_step?
-  #   current_step == steps.last
-  # end
 
   private
 

@@ -1,20 +1,25 @@
 class CampsController < ApplicationController
   include Concerns::CampSortable
-  
+
   before_action :get_locations, only: [:new]
   before_action :set_camp, only: %i[show edit update destroy toggle_status]
   helper_method :sort_camp_column, :sort_camp_direction
-
 
   # layout 'admin_layout', except: [:index, :introduction]
 
   def index
     if current_admin.nil?
-      @camps = Camp.all
-      render 'user_camp_index'
+      @camps = Camp.where(camp_status: 'Active')
+      if @camps.count == 1
+        @camp = @camps.first
+        new_camp_application
+        render template: 'camps/introduction.html.erb'
+      else
+        render 'user_camp_index'
+      end
     else
       @camps = Camp.search(params[:search]).order(sort_camp_column => sort_camp_direction).page(params[:page])
-      render :layout => 'admin_layout'
+      render layout: 'admin_layout'
       respond_to do |format|
         format.html
         format.csv do
@@ -29,10 +34,7 @@ class CampsController < ApplicationController
 
   def introduction
     @camp = Camp.find(params[:camp])
-    @camp_application = CampApplication.new
-    @camp_application.user_id = current_user.id
-    @camp_application.camp_id = @camp.id
-    @camp_application.save
+    new_camp_application
     render template: 'camps/introduction.html.erb'
   end
 
@@ -54,7 +56,7 @@ class CampsController < ApplicationController
   end
 
   def toggle_status
-    @camp.camp_status == 1 ? (@camp.camp_status = 0) : (@camp.camp_status = 1)
+    @camp.camp_status == 'Active' ? (@camp.camp_status = 'InActive') : (@camp.camp_status = 'Active')
     @camp_status = @camp.camp_status if @camp.save
   end
 
@@ -81,6 +83,13 @@ class CampsController < ApplicationController
 
   def get_locations
     @locations = CampLocation.all
+  end
+
+  def new_camp_application
+    @camp_application = CampApplication.new
+    @camp_application.user_id = current_user.id
+    @camp_application.camp_id = @camp.id
+    @camp_application.save
   end
 
   def camp_params
