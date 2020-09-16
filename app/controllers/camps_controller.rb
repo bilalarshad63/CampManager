@@ -10,7 +10,6 @@ class CampsController < ApplicationController
 
   def index
     if current_admin.nil?
-      authenticate_user!
       @camps = Camp.all
       render 'user_camp_index'
     else
