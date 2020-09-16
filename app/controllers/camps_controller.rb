@@ -30,6 +30,10 @@ class CampsController < ApplicationController
 
   def introduction
     @camp = Camp.find(params[:camp])
+    @camp_application = CampApplication.new
+    @camp_application.user_id = current_user.id
+    @camp_application.camp_id = @camp.id
+    @camp_application.save
     render template: 'camps/introduction.html.erb'
   end
 

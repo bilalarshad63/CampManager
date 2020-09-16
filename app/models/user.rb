@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-  attr_accessor :current_step
+  has_many :camp_applications
+  has_many :camps, through: :camp_applications
+  # attr_accessor :current_step
   attr_accessor :skip_password_validation
 
-  before_validation :add_username_in_db
   before_validation :add_username_in_db
   has_one_attached :image
   devise :invitable, :database_authenticatable, :registerable,
@@ -12,7 +13,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :country, presence: true
   #validates :gender, inclusion: { in: %w(man women other) }
-  validates :phone_number, presence: true, format: { with: /(?:\+?\d{1,3}[- ]?)?\(?(?:\d{3})?\)?[- ]?\d{3}[- ]?\d{2}[- ]?\d{2}/, message: 'only allows integer numbers' }, length: { in: 7..25 }
+  validates :phone_number, presence: true, format: { with: /(?:\+?\d{1,3}[- ]?)?\(?(?:\d{3})?\)?[- ]?\d{3}[- ]?\d{2}[- ]?\d{2}/, message: 'only allows numbers' }, length: { in: 7..25 }
   def country_name
     country = self.country
     ISO3166::Country[country]
@@ -34,29 +35,29 @@ class User < ApplicationRecord
     self.username = "#{first_name} #{last_name}"
   end
 
-  def current_step
-    @current_step || steps.first
-  end
+  # def current_step
+  #   @current_step || steps.first
+  # end
 
-  def steps
-    %w[personal_info education camp tech]
-  end
+  # def steps
+  #   %w[personal_info education camp tech]
+  # end
 
-  def next_step
-    self.current_step = steps[steps.index(current_step) + 1]
-  end
+  # def next_step
+  #   self.current_step = steps[steps.index(current_step) + 1]
+  # end
 
-  def previous_step
-    self.current_step = steps[steps.index(current_step) - 1]
-  end
+  # def previous_step
+  #   self.current_step = steps[steps.index(current_step) - 1]
+  # end
 
-  def first_step?
-    current_step == steps.first
-  end
+  # def first_step?
+  #   current_step == steps.first
+  # end
 
-  def last_step?
-    current_step == steps.last
-  end
+  # def last_step?
+  #   current_step == steps.last
+  # end
 
   private
 

@@ -1,0 +1,46 @@
+<div class="container  su" >
+	<div class="progress">
+	  <div id="personal_info_tag" class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div id="education_tag" class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div id="camp_tag" class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div id="tech_tag" class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
+	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+	</div>
+	<br>
+  <div class="main-content card card-block  p-2">
+    <div class="ptlr_20">
+      <h1 class="text-center">Complete your Profile</h1>
+      <%= form_for @camp_application do |f| %>
+			  <%= render "#{@camp_application.current_step}_step", f: f %> 
+			  <div class= "row">
+			  	<div class="col">
+					  <p><%= f.submit "Previous", class: 'btn btn-secondary', name: 'back_button' unless @camp_application.first_step? ||      @camp_application.current_step == 'personal_info' %></p>
+					</div>
+			  	<div class="col d-flex justify-content-end">
+				  	<%= f.submit "Continue", class: 'btn btn-success ' unless @camp_application.last_step? || @camp_application.current_step== 'personal_info' %>
+					</div>
+				</div>
+			<% end %>
+			<br>
+			<div class="d-flex justify-content-center">
+				<%= link_to 'Back to Application Form', profile_camp_application_path(@camp_application), class: 'w_color btn btn-success'%>
+			</div>
+		</div>
+	</div>
+</div>
+
