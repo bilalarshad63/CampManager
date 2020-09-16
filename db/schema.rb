@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_221336) do
+ActiveRecord::Schema.define(version: 2020_09_16_074003) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -47,6 +47,19 @@ ActiveRecord::Schema.define(version: 2020_09_09_221336) do
     t.string "phone_number"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "camp_applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "camp_id"
+    t.string "education"
+    t.string "social_media"
+    t.string "technology_requirements"
+    t.string "camp_preferences"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camp_id"], name: "index_camp_applications_on_camp_id"
+    t.index ["user_id"], name: "index_camp_applications_on_user_id"
   end
 
   create_table "camp_locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -118,4 +131,6 @@ ActiveRecord::Schema.define(version: 2020_09_09_221336) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "camp_applications", "camps"
+  add_foreign_key "camp_applications", "users"
 end

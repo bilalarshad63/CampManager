@@ -15,7 +15,6 @@
  */
 
 @import "bootstrap";
-
 #marg-40{
 	margin:40px;
 }
@@ -61,3 +60,27 @@
 {
 	color: #06810C;
 }
+
+/*.has-signup-error{
+  .signup-error{
+    background: transparent;
+    color: #ff4136;
+    border: none;
+  }
+
+  input, select{
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #808080;
+    font-weight: 500;
+  }
+
+  &.checkbox{
+    label{
+      &:before{
+        background-color: #dc3545;
+        border-color: #ff4136;
+      }
+    }
+  }
+}*/

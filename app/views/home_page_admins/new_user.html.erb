@@ -2,6 +2,7 @@
   <div class="container mt-5"> 
     <div class="main-content card card-block">
       <div class="text-center p-5">
+        <%= link_to "Back", homepage_path, class: 'btn btn-success w_color'%>
       <%= form_with model: @user, url:'create',method: :post, local: true do |f| %>
        <% if @user.errors.any? %>
           <div id="error_explanation">
@@ -44,7 +45,7 @@
           </div>
           <div class="field col-6">
             <%= f.label :country %><br />
-            <%= f.country_select :country, [], {class: "btn border border-info"}, autofocus: true, autocomplete: "country"%>
+            <%= f.country_select :country, [], {class: "btn border border-info"}, autofocus: true, autocomplete: "country", format: :with_full_country_name%>
           </div>
         </div>
           <div class="field col-4 m-auto" >

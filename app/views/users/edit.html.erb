@@ -2,6 +2,7 @@
 <div  class="container mt-4">
   <div class="main-content card card-block form-content">
     <div class="text-center pt-3" >
+      <%= link_to "Back", homepage_path, class: 'btn btn-success w_color'%>
       <%= form_with model: @user, local: true do |f| %>
        <% if @user.errors.any? %>
           <div id="error_explanation">
@@ -49,7 +50,7 @@
         </div>
           <div class="field col-4" style="margin: 0 auto">
             <%= f.label :phone_number %><br />
-            <%= f.text_field :phone_number,autofocus: true, autocomplete: "phone-number", class:'quantity w_100'%>
+            <%= f.number_field :phone_number,autofocus: true, autocomplete: "phone-number", class:'quantity w_100'%>
           </div>
           <br>
           <div class="row">

@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   # layout 'admin_layout', except: %i[edit profile update]
   before_action :authenticate_user!, only: [:index]
 
-
   def index
     @user = current_user
   end
@@ -41,6 +40,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit %i[first_name middle_name last_name email country phone_number password password_confirmation image date_of_birth gender image]
+    params.require(:user).permit %i[first_name middle_name last_name email country phone_number password password_confirmation image date_of_birth gender]
   end
 end

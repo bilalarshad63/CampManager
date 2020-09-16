@@ -1,9 +1,10 @@
 <% if user_signed_in? %>
-	<p>
-		Hello <%= link_to current_user.username, profile_user_path(current_user.id), class: 'g_color any_links' %>, 
-  	<%= link_to "Sign_Out", destroy_user_session_path, :method => 'delete', class: 'btn btn-success'%>
-  	<%= link_to 'Homepage', users_path ,class: 'btn btn-success', class: 'btn btn-success'%> 
+<div class="row">
+	<p class="col-md-auto g_color">
+		Hello, <%= current_user.username%>
   </p>
+</div>
+<%= link_to "Sign_Out", destroy_user_session_path, :method => 'delete', class: 'btn btn-success w_color'%>
 <% end %>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <div id="main"> 
@@ -13,22 +14,27 @@
       	<h4 class="text-center">Select Camp</h4>
 	       <hr>
 	       <div class="table-responsive p_20">
-	       	 <%= form_tag intro_camps_path do %>
-		        <table id="mytable" class="table table-bordred table-striped">
-		          <p>Please Select the application you would like to access:</p>
-		          <tbody>
-		            <% @camps.each do |camp| %>
-		              <tr>
-		                <td><%= radio_button_tag :camp, "#{camp.id}", false, required: 'true' %> </td>
-		                <td><%= camp.camp_title %> </td> 
-		              </tr>
-		            <%end%>
-		          </tbody>
-		        </table>
-		        <div class="d-flex justify-content-center">
-	         <%= submit_tag :Continue , class:' su btn btn-success '%>
+	       	<% if @camps.count == 0 %>
+	       	  <p class="text-center">There are no active camps to show yet.</p>
+	       	<% else %>
+		       	<%= form_tag intro_camps_path do %>
+			        <table id="mytable" class="table table-bordred table-striped">
+			          <p>Please Select the application you would like to access:</p>
+			          <tbody>
+			            <% @camps.each do |camp| %>
+			              <tr>
+			                <td><%= radio_button_tag :camp, "#{camp.id}", false, required: 'true' %> </td>
+			                <td><%= camp.camp_title %> </td> 
+			              </tr>
+			            <%end%>
+			          </tbody>
+			        </table>
+			        <div class="d-flex justify-content-center">
+			        	<%= submit_tag :Continue , class:' su btn btn-success '%>
+			        </div>
+		        <% end %>
 	        <% end %>
-	      </div>
+        </div>
       </div>
     </div>
   </div>
