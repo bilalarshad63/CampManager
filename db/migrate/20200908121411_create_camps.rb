@@ -3,7 +3,7 @@ class CreateCamps < ActiveRecord::Migration[5.2]
     create_table :camps do |t|
       t.string :camp_title
       t.string :camp_type
-      t.integer :camp_status
+      t.string :camp_status
       t.date :applicant_registration_start_date
       t.date :applicant_registration_end_date
       t.time :applicant_registration_start_time

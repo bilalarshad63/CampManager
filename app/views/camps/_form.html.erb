@@ -26,50 +26,62 @@
           </div>
           <br>
           <h4>Locations</h4>
-           <div class="field">
-            <%= form.collection_check_boxes :camp_location_ids, CampLocation.all, :id, :name do |location| %>
-              <div class="form-check form-check-inline">                
-                <%= location.check_box  class: 'form-check-input' %>
-                <%= location.label class:'form-check-label' %>
-              </div>
-            <% end %>
-          </div>
+          <% if CampLocation.count==0 %>
+            <h6>-- No Availabele Locations Now --</h6>
+          <%else%>          
+             <div class="field">
+              <%= form.collection_check_boxes :camp_location_ids, CampLocation.all, :id, :name do |location| %>
+                <div class="form-check form-check-inline">                
+                  <%= location.check_box  class: 'form-check-input' %>
+                  <%= location.label class:'form-check-label' %>
+                </div>
+              <% end %>
+            </div>
+          <%end%>
+          <br>
+          <h4>Applicants Timings</h4>
           <br>
           <div class="row">
-            <div class="field col-3">
+            <div class="field col-6">
               <%= form.label :applicant_registration_start_date %>
-              <%= form.date_select :applicant_registration_start_date %>
+              <%= form.date_field :applicant_registration_start_date %>
             </div>
-            <div class="field col-3">
-             <%= form.label :applicant_registration_start_time %>
-            <%= form.time_select :applicant_registration_start_time %>
-            </div>
-            <div class="field col-3">
-             <%= form.label :applicant_registration_end_date %>
-            <%= form.date_select :applicant_registration_end_date %>
-            </div>
-            <div class="field col-3">
-              <%= form.label :applicant_registration_end_time %>
-              <%= form.time_select :applicant_registration_end_time %>
+            <div class="field col-6">
+              <%= form.label :applicant_registration_start_time %>
+              <%= form.time_field :applicant_registration_start_time %>
             </div>
           </div>
           <div class="row">
-            <div class="field col-3">
+            <div class="field col-6">
+              <%= form.label :applicant_registration_end_date %>
+              <%= form.date_field :applicant_registration_end_date %>
+            </div>
+            <div class="field col-6">
+              <%= form.label :applicant_registration_end_time %>
+              <%= form.time_field :applicant_registration_end_time %>
+            </div>
+          </div>
+          <br>
+          <h4>Parent Application Timings</h4>
+          <br>
+          <div class="row">
+            <div class="field col-6">
               <%= form.label :parent_application_start_date %>
-              <%= form.date_select :parent_application_start_date %>
+              <%= form.date_field :parent_application_start_date %>
             </div>
-            <div class="field col-3">
+            <div class="field col-6">
               <%= form.label :parent_application_start_time %>
-              <%= form.time_select :parent_application_start_time %>
+              <%= form.time_field :parent_application_start_time %>
             </div>
-            <div class="field col-3">
+          </div>
+          <div class="row">
+            <div class="field col-6">
               <%= form.label :parent_application_end_date %>
-              <%= form.date_select :parent_application_end_date %>
+              <%= form.date_field :parent_application_end_date %>
             </div>
-            <div class="field col-3">
-              <%= form.label :parent_application_end_time %>
-              <br>
-              <%= form.time_select :parent_application_end_time %>
+            <div class="field col-6">
+              <%= form.label :parent_application_end_time %>            
+              <%= form.time_field :parent_application_end_time %>
             </div>
           </div>
           <br>
