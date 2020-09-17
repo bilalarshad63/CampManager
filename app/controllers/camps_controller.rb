@@ -8,10 +8,12 @@ class CampsController < ApplicationController
   # layout 'admin_layout', except: [:index, :introduction]
 
   def index
-    if current_admin.nil?
+    if current_admin.nil? 
+      @ccamp
       @camps = Camp.where(camp_status: 'Active')
       if @camps.count == 1
         @camp =  @camps.first
+        new_camp_application
         render template: 'camps/introduction.html.erb'
       else
         render 'user_camp_index'
@@ -33,10 +35,7 @@ class CampsController < ApplicationController
 
   def introduction
     @camp = Camp.find(params[:camp])
-    @camp_application = CampApplication.new
-    @camp_application.user_id = current_user.id
-    @camp_application.camp_id = @camp.id
-    @camp_application.save
+    new_camp_application
     render template: 'camps/introduction.html.erb'
   end
 
@@ -85,6 +84,13 @@ class CampsController < ApplicationController
 
   def get_locations
     @locations = CampLocation.all
+  end
+
+  def new_camp_application
+    @camp_application = CampApplication.new
+    @camp_application.user_id = current_user.id
+    @camp_application.camp_id = @camp.id
+    @camp_application.save
   end
 
   def camp_params
