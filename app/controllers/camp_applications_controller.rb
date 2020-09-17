@@ -11,8 +11,8 @@ class CampApplicationsController < ApplicationController
   end
 
   def update
-  	@camp_application = CampApplication.find(params[:id])
-#  	@camp_application.update(camp_application_params)
+    @camp_application = CampApplication.find(params[:id])
+    #  	@camp_application.update(camp_application_params)
     @camp_application.current_step = session[:application_step]
     if params[:back_button]
       @camp_application.previous_step
