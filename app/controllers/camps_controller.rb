@@ -8,7 +8,7 @@ class CampsController < ApplicationController
   # layout 'admin_layout', except: [:index, :introduction]
 
   def index
-    if current_admin.nil? 
+    if current_admin.nil?
       @ccamp
       @camps = Camp.where(camp_status: 'Active')
       if @camps.count == 1
