@@ -6,7 +6,7 @@ class CampsController < ApplicationController
   helper_method :sort_camp_column, :sort_camp_direction
 
   # layout 'admin_layout', except: [:index, :introduction]
-  def admin_camps
+def admin_camps
     @camps = Camp.search(params[:search]).order(sort_camp_column => sort_camp_direction).page(params[:page])
       render layout: 'admin_layout'
       respond_to do |format|

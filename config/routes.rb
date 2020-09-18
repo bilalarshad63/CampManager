@@ -1,23 +1,31 @@
 Rails.application.routes.draw do
+ 
   devise_for :users, controllers: { registrations: 'registrations', passwords: 'passwords' }
   resources :users
   resources :camp_applications do
     member do
-      get '/profile', to: 'camp_applications#profile', as: 'profile'
+      get 'camp/:camp_id/profile', to: 'camp_applications#profile', as: 'profile'
     end
   end
+ 
   resources :privacy, only: [:index]
+ 
   resources :camp_locations do
     collection do
       get 'export_csv'
     end
   end
-  devise_for :admins, controllers: { registrations: 'admin/registrations', sessions: 'admin/sessions' }
+
+  devise_for :admins, controllers: { registrations: 'devise_admin/registrations', sessions: 'devise_admin/sessions' }
   resources :admins
+
+
+  
   get '/admin', to: 'home_page_admins#index', as: 'homepage'
   get '/admin/admin_camps', to: 'camps#admin_camps', as: 'admin_camps'
   get '/admin/users/new', to: 'home_page_admins#new_user', as: 'new_user_by_admin'
   post '/admin/users/create', to: 'home_page_admins#create_user', as: 'create_user_by_admin'
+
   resources :camps do
     member do
       patch :toggle_status
@@ -26,5 +34,6 @@ Rails.application.routes.draw do
       post 'intro', to: 'camps#introduction', as: 'intro'
     end
   end
+
   root 'camps#index'
 end
