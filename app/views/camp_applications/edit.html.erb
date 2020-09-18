@@ -1,25 +1,65 @@
 <div class="container  su" >
 	<div class="progress">
-	  <div id="personal_info_tag" class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
-	  <div class="text-white" role="progressbar" style="width: 1%"></div>
-	  <div id="education_tag" class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
-	  <div class="text-white" role="progressbar" style="width: 1%"></div>
-	  <div id="camp_tag" class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
-	  <div class="text-white" role="progressbar" style="width: 1%"></div>
-	  <div id="tech_tag" class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
-	  <div class="text-white" role="progressbar" style="width: 1%"></div>
-	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
-	  <div class="text-white" role="progressbar" style="width: 1%"></div>
-	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
-	  <div class="text-white" role="progressbar" style="width: 1%"></div>
-	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
-	  <div class="text-white" role="progressbar" style="width: 1%"></div>
-	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
-	  <div class="text-white" role="progressbar" style="width: 1%"></div>
-	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
-	  <div class="text-white" role="progressbar" style="width: 1%"></div>
-	  <div class="progress-bar bg-warning" role="progressbar" style="width: 9%"></div>
-	  <div class="text-white" role="progressbar" style="width: 1%"></div>
+		<!-- education -->
+		<% if @camp_application.education.blank? %>
+	  <div class="bg-warning progressbar_lenght" >
+	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'education'), class: 'btn w_100'%>
+	  </div>
+	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <%else%>
+	  <div class="bg-success progressbar_lenght">
+	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'education'), class: 'btn w_100'%>
+	  </div>
+	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <%end%>
+	  <% if @user.gender.blank? || @user.date_of_birth.blank? %>
+	  <div class="bg-warning progressbar_lenght" >
+	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'personal_info'), class: 'btn w_100'%>
+	  </div>
+	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <%else%>
+	  <div class="bg-success progressbar_lenght">
+	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'personal_info'), class: 'btn w_100'%>
+	  </div>
+	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <%end%>
+
+	  <% if @camp_application.camp_preferences.blank? %>
+	  <div class="bg-warning progressbar_lenght" >
+	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'camp_preference'), class: 'btn w_100'%>
+	  </div>
+	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <%else%>
+	  <div class="bg-success progressbar_lenght">
+	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'camp_preference'), class: 'btn w_100'%>
+	  </div>
+	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <%end%>
+
+	  <% if @camp_application.social_media.blank? %>
+	  <div class="bg-warning progressbar_lenght" >
+	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'social_media'), class: 'btn w_100'%>
+	  </div>
+	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <%else%>
+	  <div class="bg-success progressbar_lenght">
+	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'social_media'), class: 'btn w_100'%>
+	  </div>
+	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <%end%>
+
+	  <% if @camp_application.technology_requirements.blank? %>
+	  <div class="bg-warning progressbar_lenght" >
+	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'technology_requirements'), class: 'btn w_100'%>
+	  </div>
+	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <%else%>
+	  <div class="bg-success progressbar_lenght">
+	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'technology_requirements'), class: 'btn w_100'%>
+	  </div>
+	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <%end%>
+	  
 	</div>
 	<br>
   <div class="main-content card card-block  p-2">
@@ -38,7 +78,7 @@
 			<% end %>
 			<br>
 			<div class="d-flex justify-content-center">
-				<%= link_to 'Back to Application Form', profile_camp_application_path(@camp_application), class: 'w_color btn btn-success'%>
+				<%= link_to 'Back to Application Form', profile_camp_application_path(@camp_application,@camp_application.camp_id), class: 'w_color btn btn-success'%>
 			</div>
 		</div>
 	</div>

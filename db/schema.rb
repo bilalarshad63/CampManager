@@ -116,12 +116,8 @@ ActiveRecord::Schema.define(version: 2020_09_16_074003) do
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
     t.string "username"
-    t.string "education"
-    t.string "camp_preference"
-    t.text "tech_reqs"
     t.string "gender"
     t.date "date_of_birth"
-    t.integer "form_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

@@ -2,7 +2,7 @@
   <div class="main-content card card-block">
     <div class="ptlr_20">
       <%= link_to "Back to All Camps", camps_path, class: 'btn btn-success w_color'%>
-      <h4 class="text-center">You have completed <%#= @user.percentage%>0% of your application</h4>
+      <h4 class="text-center">You have completed <%= @camp_application.calculate_percentage * 20 %>% of your application</h4>
       <p class="fs">Hi <%= @user.username %>!<br><br>
       	Thank you for starting a registration form for CONNECT!<br><br>
       	This is your personal dashboard. You can log into this portal to check the status of your registration form, view a copy of your registration form, and check the status of your parent/gaurdian form.<br><br>
@@ -17,22 +17,22 @@
     		<p> Personal Information </p>
     	</div>
     	<div class="col-2 mb">
-    	  <p class="w_color w_100 btn btn-success"> Done </p>
+        <%= link_to 'View',  edit_camp_application_path(@camp_application,:param1=> 'personal_info'), class: 'w_color btn btn-success'%>   
     	</div>
     </div>
     <div class="row .bg-light" >
     	<div class="col-9 ml-4">
-    		<p> Contact Information </p>
+    		<p> Education </p>
     	</div>
     	<div class="col-2 mb">
-        <p class="w_color w_100 btn btn-success"> Done </p>
+        <%= link_to 'View', edit_camp_application_path(@camp_application,:param1=> 'education'), class: 'w_color btn btn-success'%>   
       </div>
     </div><div class="row .bg-light" >
     	<div class="col-9 ml-4">
     		<p> Social Media Information </p>
     	</div>
     	<div class="col-2 mb">
-        <p class="w_color w_100 btn btn-success"> Done </p>
+        <%= link_to 'View', edit_camp_application_path(@camp_application,:param1=> 'social_media'), class: 'w_color btn btn-success'%>
       </div>
     </div>
     <div class="row .bg-light" >
@@ -40,39 +40,15 @@
     		<p> Virtual Camp Preference </p>
     	</div>
     	<div class="col-2 mb">
-        <p class="w_color w_100 btn btn-success"> Done </p>
+        <%= link_to 'View', edit_camp_application_path(@camp_application,:param1=> 'camp_preference'), class: 'w_color btn btn-success'%>
       </div>
     </div>
     <div class="row .bg-light" >
     	<div class="col-9 ml-4">
-    		<p> Educational Information </p>
+    		<p> Technology Requirements </p>
     	</div>
     	<div class="col-2 mb">
-        <p class="w_color w_100 btn btn-success"> Done </p>
-      </div>
-    </div>
-    <div class="row .bg-light" >
-    	<div class="col-9 ml-4">
-    		<p> Previous Camps </p>
-    	</div>
-    	<div class="col-2 mb">
-        <p class="w_color w_100 btn btn-success"> Done </p>
-      </div>
-    </div>
-    <div class="row .bg-light" >
-    	<div class="col-9 ml-4">
-    		<p> Technology Requirement </p>
-    	</div>
-    	<div class="col-2 mb">
-        <p class="w_color w_100 btn btn-success"> Done </p>
-      </div>
-    </div>
-    <div class="row .bg-light" >
-    	<div class="col-9 ml-4">
-    		<p> Enrich Activities </p>
-    	</div>
-    	<div class="col-2 mb">
-        <p class="w_color w_100 btn btn-success"> Done </p>
+        <%= link_to 'View', edit_camp_application_path(@camp_application,:param1=> 'technology_requirements'), class: 'w_color btn btn-success'%>
       </div>
     </div>
 	</div>
