@@ -1,34 +1,30 @@
 class CampsController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  include Concerns::CampSortable
-  before_action :get_locations, only: [:new]
   before_action :set_camp, only: %i[show edit update destroy toggle_status]
+  include Concerns::CampSortable
   helper_method :sort_camp_column, :sort_camp_direction
 
-  # layout 'admin_layout', except: [:index, :introduction]
-def admin_camps
+  def admin_camps
     @camps = Camp.search(params[:search]).order(sort_camp_column => sort_camp_direction).page(params[:page])
-      render layout: 'admin_layout'
-      respond_to do |format|
-        format.html
-        format.csv do
-          headers['Content-Disposition'] = 'attachment; filename="camps-list.csv"'
-          headers['Content-Type'] ||= 'text/csv'
+    render layout: 'admin_layout'
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = 'attachment; filename="camps-list.csv"'
+        headers['Content-Type'] ||= 'text/csv'
       end
     end
   end
 
   def index
-   
-      @camps = Camp.where(camp_status: 'Active')
-      if @camps.count == 1
-        @camp = @camps.first
-        new_camp_application
-        render template: 'camps/introduction.html.erb'
-      else
-        render 'index'
-      end
-    
+    @camps = Camp.where(camp_status: 'Active')
+    if @camps.count == 1
+      @camp = @camps.first
+      new_camp_application
+      render template: 'camps/introduction.html.erb'
+    else
+      render 'index'
+    end
   end
 
   def show; end
@@ -40,6 +36,7 @@ def admin_camps
   end
 
   def new
+    @locations = CampLocation.all
     @camp = Camp.new
   end
 
@@ -82,12 +79,8 @@ def admin_camps
     @camp = Camp.find(params[:id])
   end
 
-  def get_locations
-    @locations = CampLocation.all
-  end
-
   def new_camp_application
-    @camp_application = CampApplication.create(user_id: current_user.id, camp_id: @camp.id)
+    @camp_application = CampApplication.where(user_id: current_user.id, camp_id: @camp.id).first
   end
 
   def camp_params
