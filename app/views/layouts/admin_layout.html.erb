@@ -4,17 +4,11 @@
     <title>GlobalEncounters</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    
-
   </head>
-
-
-
   <body class="back">
     <nav class="navbar navbar-expand-md navbar-dark secondary-bg-color"  >
     <button class="btn side_border buttons"  onclick="toggleSidebar()"><i class="material-icons table_icons">menu</i></i></button>
@@ -24,7 +18,7 @@
       <span></span>
       <ul>
         <li> <%= link_to '<button class="btn side_border buttons text-light">Users<i class="material-icons table_icons text-light ">home</i></i></button>'.html_safe , homepage_path%></li>  
-        <li> <%= link_to '<button class="btn side_border buttons text-light">Camps<i class="material-icons table_icons text-light ">home</i></i></button>'.html_safe , camps_path%></li> 
+        <li> <%= link_to '<button class="btn side_border buttons text-light">Camps<i class="material-icons table_icons text-light ">home</i></i></button>'.html_safe , admin_camps_path%></li> 
         <li> <%= link_to '<button class="btn side_border buttons text-light">Camp Locations<i class="material-icons table_icons text-light ">home</i></i></button>'.html_safe , camp_locations_path%></li> 
         <li>Users</li>
         <li>Application Data</li>
@@ -34,27 +28,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"> </ul>
         <form class="form-inline my-2 my-lg-0">
-          <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">home</i></i></button>'.html_safe , homepage_path%>
-          <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">email</i></i></button>'.html_safe %>
-          <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">home</i></i></button>'.html_safe %>
+          <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">home</i></i></button>'.html_safe , homepage_path, title: 'Home'%>
+          <%#= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">email</i></i></button>'.html_safe %>
+          <%#= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">home</i></i></button>'.html_safe %>
           <%= current_admin.first_name + " " + current_admin.middle_name + " " + current_admin.last_name %>
           <% if current_admin.image.attached? %>
             <%= link_to (image_tag (current_admin.image) , class: 'img-admin'), admin_path(current_admin) %>
           <% else %>
-          <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">account_circle</i></button>'.html_safe,admin_path(current_admin) %>
+          <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">account_circle</i></button>'.html_safe,admin_path(current_admin), title: 'Admin Profile' %>
           <% end %>
-          <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">logout</i></i></button>'.html_safe,destroy_admin_session_path, :method => 'delete'  %>
+          <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">logout</i></i></button>'.html_safe,destroy_admin_session_path, :method => 'delete', title: 'Logout'  %>
         </form>
       </div>
     </nav>
-
     <% if notice %>
       <p class="alert alert-success" id="move-notify"><%= notice %></p>
-          <% end %>
-          <% if alert %>
+        <% end %>
+        <% if alert %>
       <p class="alert alert-danger"id="move-notify"><%= alert %></p>
     <% end %> 
-    
     <%= yield %>
   </body>
 </html>

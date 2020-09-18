@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :camp_applications
+  has_many :camp_applications, dependent: :destroy
   has_many :camps, through: :camp_applications
   attr_accessor :skip_password_validation
 
