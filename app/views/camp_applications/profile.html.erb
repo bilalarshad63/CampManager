@@ -13,6 +13,14 @@
     	<hr>
     </div>
     <div class="row .bg-light" >
+      <div class="col-9 ml-4">
+        <p> Education Information</p>
+      </div>
+      <div class="col-2 mb">
+        <%= link_to 'View', edit_camp_application_path(@camp_application,:param1=> 'education'), class: 'w_color btn btn-success'%>   
+      </div>
+    </div>
+    <div class="row .bg-light" >
     	<div class="col-9 ml-4">
     		<p> Personal Information </p>
     	</div>
@@ -22,13 +30,6 @@
     </div>
     <div class="row .bg-light" >
     	<div class="col-9 ml-4">
-    		<p> Education </p>
-    	</div>
-    	<div class="col-2 mb">
-        <%= link_to 'View', edit_camp_application_path(@camp_application,:param1=> 'education'), class: 'w_color btn btn-success'%>   
-      </div>
-    </div><div class="row .bg-light" >
-    	<div class="col-9 ml-4">
     		<p> Social Media Information </p>
     	</div>
     	<div class="col-2 mb">
@@ -37,7 +38,7 @@
     </div>
     <div class="row .bg-light" >
     	<div class="col-9 ml-4">
-    		<p> Virtual Camp Preference </p>
+    		<p> Camp Preference </p>
     	</div>
     	<div class="col-2 mb">
         <%= link_to 'View', edit_camp_application_path(@camp_application,:param1=> 'camp_preference'), class: 'w_color btn btn-success'%>

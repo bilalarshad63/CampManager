@@ -1,5 +1,5 @@
 class Camp < ApplicationRecord
-  has_many :camp_applications
+  has_many :camp_applications, dependent: :destroy
   has_many :users, through: :camp_applications
   has_and_belongs_to_many :camp_locations
   after_initialize :init
