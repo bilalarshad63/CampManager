@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: { registrations: 'admin/registrations', sessions: 'admin/sessions' }
   resources :admins
   get '/admin', to: 'home_page_admins#index', as: 'homepage'
+  get '/admin/admin_camps', to: 'camps#admin_camps', as: 'admin_camps'
   get '/admin/users/new', to: 'home_page_admins#new_user', as: 'new_user_by_admin'
   post '/admin/users/create', to: 'home_page_admins#create_user', as: 'create_user_by_admin'
   resources :camps do
@@ -25,5 +26,5 @@ Rails.application.routes.draw do
       post 'intro', to: 'camps#introduction', as: 'intro'
     end
   end
-  root 'users#index'
+  root 'camps#index'
 end

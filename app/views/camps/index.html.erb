@@ -1,68 +1,39 @@
+<% if user_signed_in? %>
+<div class="row">
+  <p class="col-md-auto g_color">
+    Hello, <%= current_user.username%>
+  </p>
+</div>
+<%= link_to "Sign_Out", destroy_user_session_path, :method => 'delete', class: 'btn btn-success w_color'%>
+<% end %>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <div id="main"> 
-  <div class="container p-4" > 
+  <div class="container col-3 p_20 fpe"> 
     <div class="main-content card card-block">
-      <div class="text-center pt-4">
-        <h4>Camps for Test Resident Camp</h4>
-        <div class="col">
-          <%= form_with method: :get, local: true do |f| %>
-            <%= f.text_field :search,value: params[:search] %>
-            <%= f.submit 'Search' ,class:'btn-success btn btn-sm ml-2'%>
-          <%end%> 
-        </div>    
-        <div class="table-responsive p-3">
-          <table id="mytable" class="table table-bordred table-striped">
-            <thead>
-              <th><input type="checkbox" /></th>
-              <th><%= sortable_camp "camp_title"%></th>
-              <th><%= sortable_camp "camp_type"%></th>
-              <th>Location</th>
-              <th>Status</th>
-              <th>Registration Date</th>
-              <th>Actions</th>
-              <th></th>
-            </thead>
-            
-            <tbody>
-              <% @camps.each do |camp| %>
-                <tr>
-                  <td><input type="checkbox"  /></td>
-                  <td> <%= camp.camp_title %> </td>
-                  <td> <%= camp.camp_type %> </td>
-                  <td> 
-                    <% camp.camp_locations.each do |location| %>
-                      <div><%= location.name %></div>
-                    <%end%>
-                  </td>
-                  <td id="status_<%= camp.id %>"> <%= camp.camp_status%> </td>
-                  <td> <%= camp.applicant_registration_start_date %> </td>
-                  <td>
-                    <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, camp_path(camp), title: 'Show Camp' %>
-                    <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">create</i></button>'.html_safe, edit_camp_path(camp), title: 'Edit Camp' %>
-                    <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">delete</i></button>'.html_safe,camp_path(camp), method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete Camp' %>
-                  </td>
-                  <td >
-                    <% if camp.camp_status == 'Active' %>
-                    <div class="toggle-btn active" id="togglebtn" onclick="this.classList.toggle('active')">
-                      <div class="inner-circle"> <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_camp_path(camp),method: :patch, remote: true%> </div>
-                    </div>  
-                    <%else%>
-                    <div class="toggle-btn" onclick="this.classList.toggle('active')">
-                      <div class="inner-circle">  <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_camp_path(camp),method: :patch,remote: true%></div>
-                    </div> 
-                    <%end%>                                  
-                  </td>
-                </tr>
-              <%end%>
-            </tbody>
-          </table>
-          <div class="d-flex justify-content-center">
-          <%= paginate @camps %>
-          </div>    
-          <div class="d-flex justify-content-center">
-          </div>
-          <%= link_to 'Add New Camp' ,new_camp_path,class: 'btn btn-success text-light'%>
-           <%= link_to 'Download CSV list', camps_path(format: :csv) ,class: 'btn btn-success'%>
+      <div class="ml-2" style="padding-top: 20px;">
+        <h4 class="text-center">Select Camp</h4>
+         <hr>
+         <div class="table-responsive p_20">
+          <% if @camps.count == 0 %>
+            <p class="text-center">There are no active camps to show yet.</p>
+          <% else %>
+            <%= form_tag intro_camps_path do %>
+              <table id="mytable" class="table table-bordred table-striped">
+                <p>Please Select the application you would like to access:</p>
+                <tbody>
+                  <% @camps.each do |camp| %>
+                    <tr>
+                      <td><%= radio_button_tag :camp, "#{camp.id}", false, required: 'true' %> </td>
+                      <td><%= camp.camp_title %> </td> 
+                    </tr>
+                  <%end%>
+                </tbody>
+              </table>
+              <div class="d-flex justify-content-center">
+                <%= submit_tag :Continue , class:' su btn btn-success '%>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
