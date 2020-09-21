@@ -7,7 +7,6 @@ class CampApplicationsController < ApplicationController
 
   def show
     @camp_application = CampApplication.find(params[:id])
-    @camp = Camp.find(@camp_application.camp_id)
   end
 
   def edit
