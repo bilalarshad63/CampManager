@@ -1,1 +1,56 @@
-<%= render 'home_page_admins/show', user: @user %>
+<div id="main">
+  <div class="container mt-5 w-50">
+    <div class="main-content card card-block">
+      <div class="card-body text-center">
+        <% if current_user.class.name == 'User' %> 
+          <h2>User Profile</h2>
+          <% else %>
+          <h2>Admin Profile</h2>
+        <%end%>
+        <div id="container">
+          <% if current_user.image.attached? %>
+                <%= image_tag current_user.image, :class=> "img-circular"  %> 
+          <% end %>
+          <br>
+          <br>
+          <div id="left">Name</div>
+          <div id="right"><%= current_user.first_name + ' '+ current_user.middle_name + ' '+ current_user.last_name %></div>
+        </div>
+        <br>
+        <hr>
+        <div id="container">
+          <div id="left">Email</div>
+          <div id="right"><%= current_user.email %></div>
+        </div>
+        <br>
+        <hr>
+         <div id="container">
+          <div id="left">Phone Number</div>
+          <div id="right"><%= current_user.phone_number %></div>
+        </div>
+        <br>
+        <hr>
+         <div id="container">
+          <div id="left">Role</div>          
+          <div id="right"><%= User %></div>          
+        </div>
+        <br>
+        <% if current_user.class.name == 'User' %> 
+        <hr>
+         <div id="container">
+          <div id="left">Country</div>
+          <div id="right"><%= current_user.country%></div>
+        </div>
+        <br>
+        <% end %>
+        <hr>                 
+      </div>
+      <br>
+      <div class="d-flex justify-content-center">
+        <%= link_to 'Edit User', edit_admin_panel_admin_path(current_user) ,class: 'w_color btn btn-success'%>
+      </div>
+      <br>      
+       <%= link_to "Back", admin_panel_homepage_path, class: 'btn btn-success w_color'%>
+    </div>
+  </div>
+</div>

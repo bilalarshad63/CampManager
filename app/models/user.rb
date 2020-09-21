@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :camps, through: :camp_applications
   attr_accessor :skip_password_validation
 
-  before_validation :add_username_in_db
+  before_validation :add_username
   has_one_attached :image
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
@@ -28,7 +28,7 @@ class User < ApplicationRecord
     end
   end
 
-  def add_username_in_db
+  def add_username
     self.username = "#{first_name} #{last_name}"
   end
 

@@ -1,27 +1,27 @@
-<div id="main ">
-  <div  class="container mt-5" >
-    <div class="main-content card card-block form-content">
-      <div class="text-center pt-3" >
-      <%=form_with model: @admin, local: true do |f| %>
-       <% if @admin.errors.any? %>
+<div id="main"> 
+  <div class="container mt-5"> 
+    <div class="main-content card card-block">
+      <div class="text-center p-5">
+      <%= form_with model: [:admin_panel, @user], local: true do |f| %>
+       <% if @user.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(movie.errors.count, "error") %> prohibited this Admin from being saved:</h2>
+            <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
             <ul>
-            <% @admin.errors.full_messages.each do |message| %>
+            <% @user.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
             </ul>
           </div>
-        <%end%>      
+        <% end %>      
         <div class="image-upload" id="profile-pic" >
-          <% if @admin.image.attached? %>
-              <%= image_tag @admin.image, :class=> "img-circular"  %> 
+          <% if @user.image.attached? %>
+              <%= image_tag user.image, :class=> "img-circular"  %> 
           <% end %>
           <label for="file-input">
             <br>
             <i class="fas fa-camera fa-2x" onclick="uploadImage()"></i>
           </label>
-          <%= f.file_field :image, id:"file-input" %>
+           <%= f.file_field :image, id:"file-input" %>
         </div>
         <div class="row">
           <div class="field col-4">
@@ -42,25 +42,20 @@
             <%= f.label :email%><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w_100'%>
           </div>
-          <div class="field col-4" style="margin: 0 auto">
+          <div class="field col-6">
+            <%= f.label :country %><br />
+            <%= f.country_select :country, [], {class: "btn border border-info"}, autofocus: true, autocomplete: "country", format: :with_full_country_name%>
+          </div>
+        </div>
+          <div class="field col-4 m-auto" >
             <%= f.label :phone_number %><br />
             <%= f.number_field :phone_number,autofocus: true, autocomplete: "phone-number", class:'quantity w_100'%>
           </div>
-        </div>
-        <br>
-        <div class="row">
-        <div class="field col-6">
-          <%= f.label :password %>      
-          <%= f.password_field :password, class: 'w_100'%>
-        </div>
-        <div class="field col-6">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, class: 'w_100'%>
-        </div>
-      </div>           
+          <br>         
         <%= f.submit :Submit ,class:'btn btn-success'%>
       </div>
-      <%end%>
+      <% end %>
+      <%= link_to "Back", admin_panel_homepage_path, class: 'btn btn-success w_color'%>
     </div>
   </div>
 </div>

@@ -1,28 +1,26 @@
 class CampApplicationsController < ApplicationController
-  
+  before_action :set_camp_application, only: %i[edit update]
+
   def profile
-    @camp_application = CampApplication.where(user_id: current_user.id, camp_id: params[:camp_id]).first
-    @user = current_user
+    @camp_application = CampApplication.find(params[:id])
+  end
+
+  def show
+    @camp_application = CampApplication.find(params[:id])
+    @camp = Camp.find(@camp_application.camp_id)
   end
 
   def edit
-    if(params[:param1].present?)
-      session[:application_step]=params[:param1]
-    end
-    
-    @user = current_user
-    @camp_application = CampApplication.find(params[:id])
+    session[:application_step] = params[:param1] if params[:param1].present?
     @camp_application.current_step = session[:application_step]
   end
 
   def update
-    @camp_application = CampApplication.find(params[:id])
     if session[:application_step] == 'personal_info'
-      @user = current_user
-      @user.skip_password_validation = true
-      @user.update(user_params)
+      current_user.skip_password_validation = true
+      current_user.update(user_params)
     else
-    @camp_application.update(camp_application_params)
+      @camp_application.update(camp_application_params)
     end
     @camp_application.current_step = session[:application_step]
     if params[:back_button]
@@ -30,7 +28,6 @@ class CampApplicationsController < ApplicationController
     else
       @camp_application.next_step
     end
-
     session[:application_step] = @camp_application.current_step
     if params[:complete_button]
       redirect_to profile_camp_application_path(@camp_application.id, @camp_application.camp_id)
@@ -41,12 +38,15 @@ class CampApplicationsController < ApplicationController
 
   private
 
+  def set_camp_application
+    @camp_application = CampApplication.find(params[:id])
+  end
+
   def camp_application_params
     params.require(:camp_application).permit %i[education camp_preferences technology_requirements social_media]
   end
 
   def user_params
-    #image
     params.require(:user).permit %i[first_name middle_name last_name email phone_number date_of_birth gender]
   end
 end

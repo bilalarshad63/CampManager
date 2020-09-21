@@ -17,9 +17,9 @@
       <span></span>
       <span></span>
       <ul>
-        <li> <%= link_to '<button class="btn side_border buttons text-light">Users<i class="material-icons table_icons text-light ">home</i></i></button>'.html_safe , homepage_path%></li>  
-        <li> <%= link_to '<button class="btn side_border buttons text-light">Camps<i class="material-icons table_icons text-light ">home</i></i></button>'.html_safe , admin_camps_path%></li> 
-        <li> <%= link_to '<button class="btn side_border buttons text-light">Camp Locations<i class="material-icons table_icons text-light ">home</i></i></button>'.html_safe , camp_locations_path%></li> 
+        <li> <%= link_to '<button class="btn side_border buttons text-light">Users<i class="material-icons table_icons text-light ">home</i></i></button>'.html_safe , admin_panel_homepage_path%></li>  
+        <li> <%= link_to '<button class="btn side_border buttons text-light">Camps<i class="material-icons table_icons text-light ">home</i></i></button>'.html_safe , admin_panel_camps_path%></li> 
+        <li> <%= link_to '<button class="btn side_border buttons text-light">Camp Locations<i class="material-icons table_icons text-light ">home</i></i></button>'.html_safe , admin_panel_camp_locations_path%></li> 
         <li>Users</li>
         <li>Application Data</li>
       </ul>
@@ -28,12 +28,11 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"> </ul>
         <form class="form-inline my-2 my-lg-0">
-          <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">home</i></i></button>'.html_safe , homepage_path, title: 'Home'%>
-          <%#= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">email</i></i></button>'.html_safe %>
-          <%#= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">home</i></i></button>'.html_safe %>
+          <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">home</i></i></button>'.html_safe , admin_panel_homepage_path, title: 'Home'%>
+          <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">email</i></i></button>'.html_safe %>
           <%= current_admin.first_name + " " + current_admin.middle_name + " " + current_admin.last_name %>
           <% if current_admin.image.attached? %>
-            <%= link_to (image_tag (current_admin.image) , class: 'img-admin'), admin_path(current_admin) %>
+            <%= link_to (image_tag (current_admin.image) , class: 'img-admin'), admin_panel_admin_path(current_admin) %>
           <% else %>
           <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">account_circle</i></button>'.html_safe,admin_path(current_admin), title: 'Admin Profile' %>
           <% end %>

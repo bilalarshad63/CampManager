@@ -1,0 +1,76 @@
+<div id="main">
+  <div class="container mt-5 w-50">
+    <div class="main-content card card-block">
+      <div class="card-body text-center">
+        <h2>Form Data</h2>
+        <div id="container">
+          <% if current_user.image.attached? %>
+                <%= image_tag current_user.image, :class=> "img-circular"  %> 
+          <% end %>
+          <br>
+          <br>
+          <div id="left">Name</div>
+          <div id="right"><%= current_user.first_name + ' '+ current_user.middle_name + ' '+ current_user.last_name %></div>
+        </div>
+        <br>
+        <hr>
+        <div id="container">
+          <div id="left">Camp Name</div>
+          <div id="right"><%= @camp.camp_title %></div>
+        </div>
+        <br>
+        <hr>
+        <div id="container">
+          <div id="left">Email</div>
+          <div id="right"><%= current_user.email %></div>
+        </div>
+        <br>
+        <hr>
+        <div id="container">
+          <div id="left">Phone Number</div>
+          <div id="right"><%= current_user.phone_number %></div>
+        </div>
+        <br>
+        <hr>
+        <div id="container">
+          <div id="left">Date Of Birth</div>
+          <div id="right"><%= current_user.date_of_birth %></div>
+        </div>
+        <br>
+        <hr>
+        <div id="container">
+          <div id="left">Gender</div>
+          <div id="right"><%= current_user.gender %></div>
+        </div>
+        <br>
+        <hr>
+        <div id="container">
+          <div id="left">Education</div>
+          <div id="right"><%= @camp_application.education %></div>
+        </div>
+        <br>
+        <hr>
+        <div id="container">
+          <div id="left">Camp Preference</div>
+          <div id="right"><%= @camp_application.camp_preferences %></div>
+        </div>
+        <br>
+        <hr>
+        <div id="container">
+          <div id="left">Social Media</div>
+          <div id="right"><%= @camp_application.social_media %></div>
+        </div>
+        <br>
+        <hr>
+        <div id="container">
+          <div id="left">Tech Requirements</div>
+          <div id="right"><%= @camp_application.technology_requirements %></div>
+        </div>
+        <br>
+        <hr>
+      </div>
+      <br>
+      <%= link_to "Back", profile_camp_application_path(@camp_application,@camp_application.camp_id), class: 'btn btn-success w_color'%>
+    </div>
+  </div>
+</div>
