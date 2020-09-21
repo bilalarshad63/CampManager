@@ -9,7 +9,7 @@ class CampApplication < ApplicationRecord
   end
 
   def steps
-    %w[personal_info education camp_preference social_media technology_requirements]
+    %w[education personal_info camp_preference social_media technology_requirements]
   end
 
   def next_step
