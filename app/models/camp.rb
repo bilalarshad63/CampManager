@@ -29,7 +29,7 @@ class Camp < ApplicationRecord
   private
 
   def init
-    self.camp_status ||= :InActive # will set the default camp status to Inactive
+    self.camp_status ||= :inactive # will set the default camp status to Inactive
   end
 
   def validate_time_date
@@ -37,6 +37,6 @@ class Camp < ApplicationRecord
       if applicant_registration_start_date > applicant_registration_end_date || parent_application_start_date > parent_application_end_date
         errors.add(:end_date, 'must be after the start date')
       end
-    end  
+    end
   end
 end

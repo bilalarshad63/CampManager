@@ -10,16 +10,16 @@ class CampApplicationsController < ApplicationController
   end
 
   def edit
-    session[:application_step] = params[:param1] if params[:param1].present?
+    session[:application_step] = params[:step] if params[:step].present?
     @camp_application.current_step = session[:application_step]
   end
 
   def update
     if session[:application_step] == 'personal_info'
       current_user.skip_password_validation = true
-      current_user.update(user_params)
+      current_user.update!(user_params)
     else
-      @camp_application.update(camp_application_params)
+      @camp_application.update!(camp_application_params)
     end
     @camp_application.current_step = session[:application_step]
     if params[:back_button]

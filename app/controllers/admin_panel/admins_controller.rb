@@ -8,7 +8,7 @@ module AdminPanel
 
     def update
       current_admin.skip_password_validation = true
-      if current_admin.update(admin_params)
+      if current_admin.update!(admin_params)
         bypass_sign_in(current_admin)
         redirect_to admin_panel_admin_path, notice: 'User was successfully updated.'
       else
