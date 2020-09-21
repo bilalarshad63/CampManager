@@ -10,17 +10,6 @@
           </div>
         <% end %>     
       <%= form_with model: current_user, url: camp_application_path(@camp_application), method: :patch do |user| %>
-        <div class="image-upload" id="profile-pic" >
-          <% if current_user.image.attached? %>
-            <%= image_tag current_user.image, :class=> "img-circular"  %> 
-          <% end %>
-          <label for="file-input">
-            <br>
-            <i class="fas fa-camera fa-2x " onclick="uploadImage()"></i>
-          </label>
-           <%= user.file_field :image, id:"file-input" %>
-        </div>
-
         <div class="row">
           <div class="field col-4">
             <%= user.label :first_name%><br />

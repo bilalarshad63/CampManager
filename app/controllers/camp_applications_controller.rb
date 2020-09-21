@@ -1,7 +1,13 @@
 class CampApplicationsController < ApplicationController
   before_action :set_camp_application, only: %i[edit update]
+
   def profile
-    @camp_application = CampApplication.where(user_id: current_user.id, camp_id: params[:camp_id]).first
+    @camp_application = CampApplication.find(params[:id])
+  end
+
+  def show
+    @camp_application = CampApplication.find(params[:id])
+    @camp = Camp.find(@camp_application.camp_id)
   end
 
   def edit

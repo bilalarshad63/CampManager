@@ -37,18 +37,18 @@
                   <td id="status_<%= camp.id %>"> <%= camp.camp_status%> </td>
                   <td> <%= camp.applicant_registration_start_date %> </td>
                   <td>
-                    <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, camp_path(camp), title: 'Show Camp' %>
-                    <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">create</i></button>'.html_safe, edit_camp_path(camp), title: 'Edit Camp' %>
-                    <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">delete</i></button>'.html_safe,camp_path(camp), method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete Camp' %>
+                    <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, admin_panel_camp_path(camp), title: 'Show Camp' %>
+                    <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">create</i></button>'.html_safe, edit_admin_panel_camp_path(camp), title: 'Edit Camp' %>
+                    <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">delete</i></button>'.html_safe,admin_panel_camp_path(camp), method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete Camp' %>
                   </td>
                   <td >
                     <% if camp.camp_status == 'Active' %>
                     <div class="toggle-btn active" id="togglebtn" onclick="this.classList.toggle('active')">
-                      <div class="inner-circle"> <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_camp_path(camp),method: :patch, remote: true%> </div>
+                      <div class="inner-circle"> <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_admin_panel_camp_path(camp),method: :patch, remote: true%> </div>
                     </div>  
                     <%else%>
                     <div class="toggle-btn" onclick="this.classList.toggle('active')">
-                      <div class="inner-circle">  <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_camp_path(camp),method: :patch,remote: true%></div>
+                      <div class="inner-circle">  <%= link_to '<button class="btn btn-transparent noHover"></button>'.html_safe, toggle_status_admin_panel_camp_path(camp),method: :patch,remote: true%></div>
                     </div> 
                     <%end%>                                  
                   </td>
@@ -61,8 +61,8 @@
           </div>    
           <div class="d-flex justify-content-center">
           </div>
-          <%= link_to 'Add New Camp' ,new_camp_path,class: 'btn btn-success text-light'%>
-           <%= link_to 'Download CSV list', camps_path(format: :csv) ,class: 'btn btn-success'%>
+          <%= link_to 'Add New Camp' ,new_admin_panel_camp_path,class: 'btn btn-success text-light'%>
+           <%= link_to 'Download CSV list', admin_panel_camps_path(format: :csv) ,class: 'btn btn-success'%>
         </div>
       </div>
     </div>

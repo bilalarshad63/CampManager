@@ -2,7 +2,6 @@
   <div class="container mt-5 w-50">
     <div class="main-content card card-block">
       <div class="card-body text-center">
-        <%= link_to "Back", homepage_path, class: 'btn btn-success w_color'%>
         <% if user.class.name == 'User' %> 
           <h2>User Profile</h2>
           <% else %>
@@ -53,10 +52,11 @@
       <br>
       <% if user.class.name == 'Admin' %> 
       <div class="d-flex justify-content-center">
-        <%= link_to 'Edit Admin', edit_admin_path(user) ,class: 'btn btn-success'%>
+        <%= link_to 'Edit Admin', edit_admin_panel_admin_path(user) ,class: 'w_color btn btn-success'%>
       </div>
       <br>
       <% end %>
+       <%= link_to "Back", admin_panel_homepage_path, class: 'btn btn-success w_color'%>
     </div>
   </div>
 </div>

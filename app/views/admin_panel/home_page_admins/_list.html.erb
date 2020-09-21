@@ -19,9 +19,9 @@
           <td> <%= user.country_name %> </td>
           <td> <%= user.phone_number %> </td>
           <td>
-            <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, user_path(user), title: 'Show User' %>
-            <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">create</i></button>'.html_safe, edit_user_path(user), title: 'Edit User' %>
-            <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">delete</i></button>'.html_safe,user_path(user), method: :delete, data: { confirm: 'Are you sure?' },  title: 'Delete User'   %>
+            <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">visibility</i></button>'.html_safe, admin_panel_user_path(user), title: 'Show User' %>
+            <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">create</i></button>'.html_safe, edit_admin_panel_user_path(user), title: 'Edit User' %>
+            <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">delete</i></button>'.html_safe,admin_panel_user_path(user), method: :delete, data: { confirm: 'Are you sure?' },  title: 'Delete User'   %>
           </td>
         </tr>
       <%end%>
@@ -30,7 +30,7 @@
   <div class="d-flex justify-content-center">
     <%= paginate @users %>
   </div>
-    <%= link_to 'Add New User' ,new_user_by_admin_path,class: 'w_color btn btn-success'%>
+    <%= link_to 'Add New User' ,new_admin_panel_user_path,class: 'w_color btn btn-success'%>
     &nbsp;&nbsp;&nbsp;
-    <%= link_to 'Download CSV list', homepage_path(format: :csv), class: 'btn btn-success'%>
+    <%= link_to 'Download CSV list', admin_panel_homepage_path(format: :csv), class: 'w_color btn btn-success'%>
 </div>

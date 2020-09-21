@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show destroy edit update]
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!
+  before_action :set_user, only: %i[show edit update]
 
   def show; end
 
@@ -10,17 +10,9 @@ class UsersController < ApplicationController
     @user.skip_password_validation = true
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to user_path, notice: 'User was successfully updated.' }        
       else
         format.html { redirect_to homepage_path, notice: @user.errors }
-      end
-    end
-  end
-
-  def destroy
-    if @user.destroy
-      respond_to do |format|
-        format.html { redirect_to homepage_path, notice: 'User was successfully Destroyed.' }
       end
     end
   end

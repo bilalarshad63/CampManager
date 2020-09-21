@@ -17,7 +17,7 @@
           <% if @camps.count == 0 %>
             <p class="text-center">There are no active camps to show yet.</p>
           <% else %>
-            <%= form_tag intro_camps_path do %>
+            <%= form_tag camp_path('?'), method: :get do %>
               <table id="mytable" class="table table-bordred table-striped">
                 <p>Please Select the application you would like to access:</p>
                 <tbody>

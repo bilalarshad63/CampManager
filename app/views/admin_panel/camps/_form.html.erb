@@ -2,7 +2,7 @@
   <div  class="container mt-5" >
     <div class="main-content card card-block form-content">
       <div class="text-center pt-3" >
-        <%= form_with(model: camp, local: true) do |form| %>
+        <%= form_with(model: [:admin_panel, camp], local: true) do |form| %>
           <% if camp.errors.any? %>
             <div id="error_explanation">
               <h2><%= pluralize(camp.errors.count, "error") %> prohibited this camp from being saved:</h2>
@@ -89,7 +89,7 @@
           <div class="actions">
             <%= form.submit :Submit ,class:'btn btn-success '%>
             &nbsp &nbsp
-            <%= link_to 'Cancel' ,camps_path, class:'text-light btn btn-success '%>
+            <%= link_to 'Cancel' ,admin_panel_camps_path, class:'text-light btn btn-success '%>
           </div>
         <% end %>
       </div>
