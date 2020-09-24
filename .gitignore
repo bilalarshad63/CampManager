@@ -1,6 +1,6 @@
 .DS_Store
-/log/
-/tmp/
+/log/*.log
+/tmp
 /storage/
 .byebug_history
 /.bundle
@@ -12,3 +12,6 @@
 !/storage/.keep
 /node_modules
 /yarn
+/public/assets/*
+/public/system/*
+/public/stylesheets/*

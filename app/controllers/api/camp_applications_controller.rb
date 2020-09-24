@@ -1,4 +1,4 @@
-class Api::CampApplicationsController < ApplicationController
+class Api::CampApplicationsController < Api::BaseController
   def index
     @camp_applications = CampApplication.all
     render json: @camp_applications
