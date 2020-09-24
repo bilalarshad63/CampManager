@@ -26,6 +26,9 @@ Rails.application.routes.draw do
       end
     end
   end
+  namespace :api do
+    resources :camp_applications
+  end
 
   root 'camps#index'
 end
