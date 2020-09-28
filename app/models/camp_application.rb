@@ -30,12 +30,11 @@ class CampApplication < ApplicationRecord
 
   def calculate_percentage
     percentage = 0
-    percentage += 1 if self.education.present?
-    percentage += 1 if self.camp_preferences.present?
-    percentage += 1 if self.social_media.present?
-    @user=User.find(self.user_id)
-    percentage += 1 if @user.gender.present? && @user.date_of_birth.present?
-    percentage += 1 if self.technology_requirements.present?
+    percentage += 20 if self.education_check?
+    percentage += 20 if self.camp_preferences_check?
+    percentage += 20 if self.social_media_check?
+    percentage += 20 if self.personal_info_check?
+    percentage += 20 if self.tech_requirements_check?
     percentage
   end
 end

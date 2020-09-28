@@ -1,5 +1,12 @@
 <h3 class="text-center">Social Media Information </h3>
-	<p>
-		<%= f.label :social_media %><br />
-		<%= f.text_field :social_media %>
-	</p>
+<br>
+<% if @camp_application.social_media_check? %>
+<h6 class="text-center text-success"> Form Submitted </h6>
+<%else%>
+<h6 class="text-center text-danger"> Form Not Submitted </h6>
+<%end%>
+<br>
+<p>
+	<%= f.label :social_media %><br />
+	<%= f.text_field :social_media , oninput: 'auto_update_camp_application();',id:'social-media', class: 'w_100'%>
+</p>
