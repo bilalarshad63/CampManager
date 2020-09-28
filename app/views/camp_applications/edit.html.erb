@@ -1,65 +1,60 @@
 <div class="container  su" >
 	<div class="progress">
-		<!-- education -->
-		<% if @camp_application.education.blank? %>
-	  <div class="bg-warning progressbar_lenght" >
-	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'education'), class: 'btn w_100',title: 'Education'%>
-	  </div>
-	  <div class="text-white progressbar_seperation_lenght" ></div>
+		<% if @camp_application.personal_info_check? %>
+		  <div class="bg-success progressbar_lenght">
+		  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'personal_info'), class: 'btn w_100',title: 'Personal Info'%>
+		  </div>
+		  <div class="text-white progressbar_seperation_lenght" ></div>
 	  <%else%>
-	  <div class="bg-success progressbar_lenght">
-	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'education'), class: 'btn w_100',title: 'Education'%>
-	  </div>
-	  <div class="text-white progressbar_seperation_lenght" ></div>
-	  <%end%>
-	  <% if @user.gender.blank? || @user.date_of_birth.blank? %>
-	  <div class="bg-warning progressbar_lenght" >
-	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'personal_info'), class: 'btn w_100',title: 'Personal Info'%>
-	  </div>
-	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  	<div class="bg-warning progressbar_lenght" >
+		  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'personal_info'), class: 'btn w_100',title: 'Personal Info'%>
+		  </div>
+		  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <%end%>	
+		<% if @camp_application.education_check? %>
+		  <div class="bg-success progressbar_lenght">
+		  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'education'), class: 'btn w_100',title: 'Education'%>
+		  </div>
+		  <div class="text-white progressbar_seperation_lenght" ></div>
 	  <%else%>
-	  <div class="bg-success progressbar_lenght">
-	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'personal_info'), class: 'btn w_100',title: 'Personal Info'%>
-	  </div>
-	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  	<div class="bg-warning progressbar_lenght" >
+		  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'education'), class: 'btn w_100',title: 'Education'%>
+		  </div>
+		  <div class="text-white progressbar_seperation_lenght" ></div>
 	  <%end%>
-
-	  <% if @camp_application.camp_preferences.blank? %>
-	  <div class="bg-warning progressbar_lenght" >
-	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'camp_preference'), class: 'btn w_100',title: 'Camp Preferences'%>
-	  </div>
-	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <% if @camp_application.camp_preferences_check? %>
+		  <div class="bg-success progressbar_lenght">
+		  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'camp_preference'), class: 'btn w_100',title: 'Camp Preferences'%>
+		  </div>
+		  <div class="text-white progressbar_seperation_lenght" ></div>
 	  <%else%>
-	  <div class="bg-success progressbar_lenght">
-	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'camp_preference'), class: 'btn w_100',title: 'Camp Preferences'%>
-	  </div>
-	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  	<div class="bg-warning progressbar_lenght" >
+		  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'camp_preference'), class: 'btn w_100',title: 'Camp Preferences'%>
+		  </div>
+		  <div class="text-white progressbar_seperation_lenght" ></div>
 	  <%end%>
-
-	  <% if @camp_application.social_media.blank? %>
-	  <div class="bg-warning progressbar_lenght" >
-	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'social_media'), class: 'btn w_100',title: 'Social Media'%>
-	  </div>
-	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <% if @camp_application.social_media_check? %>
+		  <div class="bg-success progressbar_lenght">
+		  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'social_media'), class: 'btn w_100',title: 'Social Media'%>
+		  </div>
+		  <div class="text-white progressbar_seperation_lenght" ></div>
 	  <%else%>
-	  <div class="bg-success progressbar_lenght">
-	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'social_media'), class: 'btn w_100',title: 'Social Media'%>
-	  </div>
-	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  	<div class="bg-warning progressbar_lenght" >
+		  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'social_media'), class: 'btn w_100',title: 'Social Media'%>
+		  </div>
+		  <div class="text-white progressbar_seperation_lenght" ></div>	  
 	  <%end%>
-
-	  <% if @camp_application.technology_requirements.blank? %>
-	  <div class="bg-warning progressbar_lenght" >
-	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'technology_requirements'), class: 'btn w_100',title: 'technology Requirements'%>
-	  </div>
-	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  <% if @camp_application.tech_requirements_check? %>
+			<div class="bg-success progressbar_lenght">
+		  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'technology_requirements'), class: 'btn w_100',title: 'technology Requirements'%>
+		  </div>
+		  <div class="text-white progressbar_seperation_lenght" ></div>
 	  <%else%>
-	  <div class="bg-success progressbar_lenght">
-	  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'technology_requirements'), class: 'btn w_100',title: 'technology Requirements'%>
-	  </div>
-	  <div class="text-white progressbar_seperation_lenght" ></div>
+	  	<div class="bg-warning progressbar_lenght" >
+		  	<%= link_to '', edit_camp_application_path(@camp_application,:param1=> 'technology_requirements'), class: 'btn w_100',title: 'technology Requirements'%>
+		  </div>
+		  <div class="text-white progressbar_seperation_lenght" ></div>
 	  <%end%>
-	  
 	</div>
 	<br>
   <div class="main-content card card-block  p-2">
@@ -69,16 +64,24 @@
 			  <%= render "#{@camp_application.current_step}_step", f: f %> 
 			  <div class= "row">
 			  	<div class="col">
-					  <p><%= f.submit "Previous", class: 'btn btn-secondary', name: 'back_button' unless @camp_application.first_step? ||      @camp_application.current_step == 'personal_info' %></p>
+					  <p><%= f.submit "Previous", class: 'btn btn-secondary', name: 'back_button' unless @camp_application.first_step? || @camp_application.current_step == 'personal_info' %></p>
 					</div>
 			  	<div class="col d-flex justify-content-end">
-				  	<%= f.submit "Continue", class: 'btn btn-success ' unless @camp_application.last_step? || @camp_application.current_step== 'personal_info' %>
+			  		<% if @camp_application.calculate_percentage==80 %>
+							<%= f.submit "Continue", class: 'btn btn-success ',data: { confirm: 'Are You Sure! After Submission, You cant change the provided info' } unless @camp_application.last_step? || @camp_application.current_step== 'personal_info' %>
+						<%else%>
+							<%= f.submit "Continue", class: 'btn btn-success ' unless @camp_application.last_step? || @camp_application.current_step== 'personal_info' %>
+						<%end%>
 					</div>
 				</div>
 			<% end %>
 			<br>
-			<div class="d-flex justify-content-center">
-				<%= link_to 'Back to Application Form', profile_camp_application_path(@camp_application,@camp_application.camp_id), class: 'w_color btn btn-success'%>
+			<div class="d-flex justify-content-center">			
+				<% if @camp_application.calculate_percentage==100 %>
+					<%= link_to 'Back to Application Form', profile_camp_application_path(@camp_application,@camp_application.camp_id), class: 'w_color btn btn-success',data: { confirm: 'Are You Sure! After Submission, You cant change the provided info' } %>				 
+				<%else%>
+					<%= link_to 'Back to Application Form', profile_camp_application_path(@camp_application,@camp_application.camp_id), class: 'w_color btn btn-success'%>				 
+				<%end%>	
 			</div>
 		</div>
 	</div>

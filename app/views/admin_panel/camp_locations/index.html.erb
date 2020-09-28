@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<div id="main"> 
+  <div class="container pa_20"> 
+    <div class="main-content card card-block">
+      <div class="text-center pt-3">
+        <h4>Locations for all camps</h4>
+        <div class="row">
+          <div class="col mr-4">
+            <%= form_with method: :get, local: true do |f| %>
+              <%= f.text_field :search,value: params[:search] %>
+              <%= f.submit 'Search' %>
+            <% end %> 
+          </div>
+        </div>
+        <%= render 'admin_panel/camp_locations/camp_list', camp_locations: @camp_locations %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

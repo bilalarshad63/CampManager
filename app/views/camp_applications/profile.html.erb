@@ -2,15 +2,28 @@
   <div class="main-content card card-block">
     <div class="ptlr_20">
       <%= link_to "Back to All Camps", camps_path, class: 'btn btn-success w_color'%>
-      <h4 class="text-center">You have completed <%= @camp_application.calculate_percentage * 20 %>% of your application</h4>
-      <p class="fs">Hi <%= @user.username %>!<br><br>
+      <h4 class="text-center">You have completed <%= @camp_application.calculate_percentage %>% of your application</h4>
+      <p class="fs">Hi <%= current_user.username %>!<br><br>
       	Thank you for starting a registration form for CONNECT!<br><br>
       	This is your personal dashboard. You can log into this portal to check the status of your registration form, view a copy of your registration form, and check the status of your parent/gaurdian form.<br><br>
       	If you have any question, feel free to<a href="#" class="any_links g_color"> Conatct Us.</a><br><br>
       	Thank you again for you submission!
       </p>
-    	<%= link_to 'Continue to Complete Application', edit_camp_application_path(@camp_application), class: 'w_color btn btn-success'%>
+      <%= link_to 'Continue to Complete Application', edit_camp_application_path(@camp_application), class: 'w_color btn btn-success'%>
+      <% if @camp_application.calculate_percentage==100 %>
+        <%= link_to 'View Complete Application', camp_application_path(@camp_application),remote: true, disabled: true, class: 'w_color btn btn-success float-right'%>
+      <%else%>
+        <%= link_to 'View Complete Application', '#',class: 'w_color btn btn-success float-right', :onclick => "alert('Complete Your Profile to View')" %>
+      <%end%>
     	<hr>
+    </div>
+    <div class="row .bg-light" >
+      <div class="col-9 ml-4">
+        <p> Personal Information </p>
+      </div>
+      <div class="col-2 mb">
+        <%= link_to 'View',  edit_camp_application_path(@camp_application,:param1=> 'personal_info'), class: 'w_color btn btn-success'%>   
+      </div>
     </div>
     <div class="row .bg-light" >
       <div class="col-9 ml-4">
@@ -19,14 +32,6 @@
       <div class="col-2 mb">
         <%= link_to 'View', edit_camp_application_path(@camp_application,:param1=> 'education'), class: 'w_color btn btn-success'%>   
       </div>
-    </div>
-    <div class="row .bg-light" >
-    	<div class="col-9 ml-4">
-    		<p> Personal Information </p>
-    	</div>
-    	<div class="col-2 mb">
-        <%= link_to 'View',  edit_camp_application_path(@camp_application,:param1=> 'personal_info'), class: 'w_color btn btn-success'%>   
-    	</div>
     </div>
     <div class="row .bg-light" >
     	<div class="col-9 ml-4">

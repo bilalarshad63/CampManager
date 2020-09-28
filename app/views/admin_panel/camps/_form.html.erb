@@ -1,0 +1,98 @@
+<div id="main">
+  <div  class="container mt-5" >
+    <div class="main-content card card-block form-content">
+      <div class="text-center pt-3" >
+        <%= form_with(model: [:admin_panel, camp], local: true) do |form| %>
+          <% if camp.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(camp.errors.count, "error") %> prohibited this camp from being saved:</h2>
+              <ul>
+              <% camp.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="row">
+            <div class="field col-6">
+              <%= form.label :camp_title %>
+              <%= form.text_field :camp_title ,class: 'w_100'%>
+            </div>
+            <div class="field col-6">
+              <%= form.label :camp_type %>
+              <br>
+              <%= form.select :camp_type, ['virtual', 'real'],class: 'w-100'%>
+            </div>
+          </div>
+          <br>
+          <h4>Locations</h4>
+          <% if CampLocation.count==0 %>
+            <h6>-- No Availabele Locations Now --</h6>
+          <%else%>          
+             <div class="field">
+              <%= form.collection_check_boxes :camp_location_ids, CampLocation.all, :id, :name do |location| %>
+                <div class="form-check form-check-inline">                
+                  <%= location.check_box  class: 'form-check-input' %>
+                  <%= location.label class:'form-check-label' %>
+                </div>
+              <% end %>
+            </div>
+          <%end%>
+          <br>
+          <h4>Applicants Timings</h4>
+          <br>
+          <div class="row">
+            <div class="field col-6">
+              <%= form.label :applicant_registration_start_date %>
+              <%= form.date_field :applicant_registration_start_date %>
+            </div>
+            <div class="field col-6">
+              <%= form.label :applicant_registration_start_time %>
+              <%= form.time_field :applicant_registration_start_time %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field col-6">
+              <%= form.label :applicant_registration_end_date %>
+              <%= form.date_field :applicant_registration_end_date %>
+            </div>
+            <div class="field col-6">
+              <%= form.label :applicant_registration_end_time %>
+              <%= form.time_field :applicant_registration_end_time %>
+            </div>
+          </div>
+          <br>
+          <h4>Parent Application Timings</h4>
+          <br>
+          <div class="row">
+            <div class="field col-6">
+              <%= form.label :parent_application_start_date %>
+              <%= form.date_field :parent_application_start_date %>
+            </div>
+            <div class="field col-6">
+              <%= form.label :parent_application_start_time %>
+              <%= form.time_field :parent_application_start_time %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field col-6">
+              <%= form.label :parent_application_end_date %>
+              <%= form.date_field :parent_application_end_date %>
+            </div>
+            <div class="field col-6">
+              <%= form.label :parent_application_end_time %>            
+              <%= form.time_field :parent_application_end_time %>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="actions">
+            <%= form.submit :Submit ,class:'btn btn-success '%>
+            &nbsp &nbsp
+            <%= link_to 'Cancel' ,admin_panel_camps_path, class:'text-light btn btn-success '%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
