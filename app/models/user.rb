@@ -9,7 +9,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   validates :password, password: true, unless: :skip_password_validation
-
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :country, presence: true

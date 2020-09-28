@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get '/admin', to: 'home_page_admins#index', as: 'homepage'
     resources :admins
     resources :users
+    resources :camp_applications
     resources :camp_locations do
       collection do
         get 'export_csv'
@@ -27,6 +28,9 @@ Rails.application.routes.draw do
         patch :toggle_status
       end
     end
+  end
+  namespace :api do
+    resources :camp_applications
   end
 
   namespace :api do

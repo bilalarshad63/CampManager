@@ -4,13 +4,10 @@
       <div class="card-body text-center">
         <h2>Form Data</h2>
         <div id="container">
-          <% if @camp_application.user.image.attached? %>
-                <%= image_tag @camp_application.user.image, :class=> "img-circular"  %> 
-          <% end %>
           <br>
           <br>
-          <div id="left">Username</div>
-          <div id="right"><%= @camp_application.user.username%></div>
+          <div id="left">Name</div>
+          <div id="right"><%= @camp_application.user.username %></div>
         </div>
         <br>
         <hr>
@@ -22,7 +19,7 @@
         <hr>
         <div id="container">
           <div id="left">Email</div>
-          <div id="right"><%= @camp_application.user.email %></div>
+          <div id="right"><%= @camp_application.user.email%></div>
         </div>
         <br>
         <hr>
@@ -70,7 +67,7 @@
         <hr>
       </div>
       <br>
-      <%= link_to "Back", profile_camp_application_path(@camp_application,@camp_application.camp_id), class: 'btn btn-success w_color'%>
+      <%= link_to "Back", admin_panel_camp_applications_path, class: 'btn btn-success w_color'%>
     </div>
   </div>
 </div>

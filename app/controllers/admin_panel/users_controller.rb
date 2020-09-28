@@ -12,7 +12,7 @@ module AdminPanel
       @user = User.new(user_params)
       @user.skip_password_validation = true
       @user.skip_confirmation!
-      if @user.save
+      if @user.save!
         @user.invite!
         redirect_to admin_panel_homepage_path, notice: 'User was successfully Created.'
       else
@@ -27,7 +27,7 @@ module AdminPanel
     def update
       @user.skip_password_validation = true
       respond_to do |format|
-        if @user.update(user_params)
+        if @user.update!(user_params)
           format.html { redirect_to admin_panel_user_path, notice: 'User was successfully updated.' }
         else
           format.html { redirect_to admin_panel_homepage_path, notice: @user.errors }
@@ -36,7 +36,7 @@ module AdminPanel
     end
 
     def destroy
-      if @user.destroy
+      if @user.destroy!
         respond_to do |format|
           format.html { redirect_to admin_panel_homepage_path, notice: 'User was successfully Destroyed.' }
         end

@@ -1,0 +1,22 @@
+<div class="container su" >
+	<div class="main-content card card-block  p-2">
+    <div class="ptlr_20">
+      <h1 class="text-center">Edit User's Application</h1>
+      <%= form_for [:admin_panel,@camp_application] do |f| %>
+			  <%= render "#{@camp_application.current_step}_step", f: f %> 
+			  <div class= "row">
+			  	<div class="col">
+					  <p><%= f.submit "Previous", class: 'btn btn-secondary', name: 'back_button' unless @camp_application.first_step? ||      @camp_application.current_step == 'personal_info' %></p>
+					</div>
+			  	<div class="col d-flex justify-content-end">
+				  	<%= f.submit "Continue", class: 'btn btn-success ' unless @camp_application.last_step? || @camp_application.current_step== 'personal_info' %>
+					</div>
+				</div>
+			<% end %>
+			<br>
+			<div class="d-flex justify-content-center">
+				<%= link_to 'Back to All Applications', admin_panel_camp_applications_path, class: 'w_color btn btn-success'%>
+			</div>
+		</div>
+	</div>
+</div>

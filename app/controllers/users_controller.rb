@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def update
     @user.skip_password_validation = true
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update!(user_params)
         format.html { redirect_to user_path, notice: 'User was successfully updated.' }        
       else
         format.html { redirect_to homepage_path, notice: @user.errors }
