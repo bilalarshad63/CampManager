@@ -1,5 +1,12 @@
 <h3 class="text-center"> Camp Preference </h3>
-	<p>
-		<%= f.label :camp_preferences %><br />
-		<%= f.text_field :camp_preferences %>
-	</p>
+<br>
+<% if @camp_application.camp_preferences_check? %>
+<h6 class="text-center text-success"> Form Submitted </h6>
+<%else%>
+<h6 class="text-center text-danger"> Form Not Submitted </h6>
+<%end%>
+<br>
+<p>
+	<%= f.label :camp_preferences %><br />
+	<%= f.text_field :camp_preferences, oninput: 'auto_update_camp_application();',id:'camp-preferences', class: 'w_100'%>
+</p>
