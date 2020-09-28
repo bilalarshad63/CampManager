@@ -16,7 +16,7 @@ class Camp < ApplicationRecord
   validates :parent_application_end_time, presence: true
   validate :validate_time_date
 
-  #enum camp_status: {Active: 1, InActive: 0}
+  
 
   def self.search(search)
     if search
@@ -29,7 +29,7 @@ class Camp < ApplicationRecord
   private
 
   def init
-    self.camp_status ||= :InActive # will set the default camp status to Inactive
+    self.camp_status ||= :inactive 
   end
 
   def validate_time_date

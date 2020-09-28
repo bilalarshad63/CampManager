@@ -21,9 +21,6 @@ class CampsController < ApplicationController
 
   def new_camp_application
     @camp_application = CampApplication.where(user_id: current_user.id, camp_id: @camp.id).first
-    if @camp_application.nil?
-      @camp_application = CampApplication.new(user_id: current_user.id, camp_id: @camp.id)
-      @camp_application.save
-    end
+    @camp_application = CampApplication.create(user_id: current_user.id, camp_id: @camp.id) if @camp_application.nil?
   end
 end

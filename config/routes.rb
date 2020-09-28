@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     member do
       get 'camp/:camp_id/profile', to: 'camp_applications#profile', as: 'profile'
     end
+    member do
+      post '/auto_save', to: 'camp_applications#auto_save', as: 'auto_save'
+    end
   end
   resources :privacy, only: [:index]
 
@@ -26,5 +29,18 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :camps, only: %i[index]
+    end
+    namespace :v2 do
+      post :auth, to: 'authentication#create'
+      resources :camps, only: %i[index]
+    end
+  end
+
   root 'camps#index'
+
+  match '*path', to: 'application#error_404', via: :all
+
 end

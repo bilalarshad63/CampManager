@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def add_username
-    self.username = "#{first_name} #{last_name}"
+    self.username = [first_name, last_name].join
   end
 
   private

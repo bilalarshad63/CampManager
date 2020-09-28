@@ -1,5 +1,12 @@
 <h3 class="text-center"> Education Information </h3>
-	<p>
-		<%= f.label :education %><br />
-		<%= f.text_field :education %>
-	</p>
+<br>
+<% if @camp_application.education_check? %>
+<h6 class="text-center text-success"> Form Submitted </h6>
+<%else%>
+<h6 class="text-center text-danger"> Form Not Submitted </h6>
+<%end%>
+<br>
+<p>
+	<%= f.label :education %><br />
+	<%= f.text_field :education, class: 'w_100', oninput: 'auto_update_camp_application();',id:'education'%>
+</p>

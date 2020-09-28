@@ -34,7 +34,7 @@
           <% if current_admin.image.attached? %>
             <%= link_to (image_tag (current_admin.image) , class: 'img-admin'), admin_panel_admin_path(current_admin) %>
           <% else %>
-          <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">account_circle</i></button>'.html_safe,admin_path(current_admin), title: 'Admin Profile' %>
+          <%= link_to '<button class="btn buttons"><i class="material-icons table_icons">account_circle</i></button>'.html_safe,admin_panel_admin_path(current_admin), title: 'Admin Profile' %>
           <% end %>
           <%= link_to '<button class="btn side_border buttons"><i class="material-icons table_icons">logout</i></i></button>'.html_safe,destroy_admin_session_path, :method => 'delete', title: 'Logout'  %>
         </form>

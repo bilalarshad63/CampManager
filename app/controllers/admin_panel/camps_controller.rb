@@ -49,7 +49,7 @@ module AdminPanel
     end
 
     def toggle_status
-      @camp.camp_status == 'Active' ? (@camp.camp_status = 'InActive') : (@camp.camp_status = 'Active')
+      @camp.camp_status == 'active' ? (@camp.camp_status = 'inactive') : (@camp.camp_status = 'active')
       @camp_status = @camp.camp_status if @camp.save
     end
 
