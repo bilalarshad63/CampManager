@@ -1,4 +1,4 @@
-class Api::V2::AuthenticationController < Api::BaseController
+class Api::V2::AuthenticationController < BaseController
 
 	skip_before_action :authenticate_token!
 
